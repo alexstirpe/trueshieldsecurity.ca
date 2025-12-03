@@ -1,5 +1,3 @@
-<!-- Created By: • Alexandria S. • Mohammed M. -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +44,77 @@
         a.email-link:hover {
             text-decoration: underline;
         }
+
+        /* Hidden button styling */
+        .secret-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            opacity: 0; /* Make it invisible */
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #1e1e1e;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-content h2 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+
+        .modal-content p {
+            margin: 0 0 20px 0;
+            font-size: 14px;
+            color: #bfbfbf;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #4da3ff;
+            border-radius: 4px;
+            background: #0f0f0f;
+            color: #ffffff;
+        }
+
+        .modal-content button {
+            padding: 10px 20px;
+            background: #4da3ff;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background: #357ae8;
+        }
     </style>
 </head>
 
@@ -61,5 +130,38 @@
         </p>
         <p>We appreciate your patience.</p>
     </div>
+
+    <!-- Hidden button -->
+    <button class="secret-button" onclick="showModal()"></button>
+
+    <!-- Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <h2>Molex Development</h2>
+            <p>✨ Built with pride. Fueled by community. Powered by vision. ✨</p>
+            <p>Administrator Login</p>
+            <input type="password" id="adminPassword" placeholder="Enter password" />
+            <button onclick="checkPassword()">Login</button>
+        </div>
+    </div>
+
+    <script>
+        // Show the modal
+        function showModal() {
+            document.getElementById('passwordModal').style.display = 'flex';
+        }
+
+        // Check the password
+        function checkPassword() {
+            const password = document.getElementById('adminPassword').value;
+            const correctPassword = "admin123"; // Replace with your secure password
+
+            if (password === correctPassword) {
+                window.location.href = "home.html"; // Redirect to home.html
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+    </script>
 </body>
 </html>
