@@ -5,23 +5,26 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>About — True Shield Security</title>
 	<link rel="stylesheet" href="/css/styles.css">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 	<!-- styles moved to /assets/css/style.css -->
 </head>
 <body>
 			<header class="site-header">
-				<div class="brand">
-					<a href="/index.html"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
-				</div>
+				<div class="site-header-inner">
+					<div class="brand">
+						<a href="/index.html"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
+					</div>
 
-				<nav aria-label="Main navigation">
-					<a href="/index.html">Home</a>
-					<a href="/about.html">About</a>
-					<a href="/services.html">Services</a>
-					<a href="/contact.html">Contact</a>
-				</nav>
+					<nav aria-label="Main navigation">
+						<a href="/index.html">Home</a>
+						<a href="/about.html">About</a>
+						<a href="/services.html">Services</a>
+						<a href="/contact.html">Contact</a>
+					</nav>
 
-				<div class="header-cta">
-					<a class="btn" href="/contact.html">Request a Quote</a>
+					<div class="header-cta">
+						<a class="btn" href="/contact.html">Request a Quote</a>
+					</div>
 				</div>
 			</header>
 
@@ -38,9 +41,42 @@
 					<p style="color:#333;">To become one of the leading providers of security services in Canada, known for our customer service, quick response, professionalism, open flexibilty, affordable rates and dedication to client requirements.</p>
 
 					<h2 style="margin-top:22px;">Management Team</h2>
-					<p style="color:#333;">In my role as Founder and CEO, I provide complete oversight of all business matters. I serve as the lead for all business development activities, from initial client acquisition to building and preserving long-term partnerships. I fully am committed to strategically growing the company by personally directing our marketing efforts and ensuring we maintain a strong, positive brand image. 
- 
-With over 25 years of diverse experience in the security industry, my background encompasses hands-on operational management, business development, and direct leadership of large-scale security teams. This extensive experience provides a firm foundation for the successful launch and growth of True Shield Security Services.</p>
+					<!-- Professional founder card for Anwar Bonimy with placeholder image (matches team-card style) -->
+					<div class="founder-card" style="display:flex;gap:12px;align-items:flex-start;background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);">
+						<div class="avatar">
+							<img src="assets/anwar.jpg" alt="Anwar Bonimy">
+						</div>
+						<div>
+							<h3 style="margin:0 0 6px 0;">Anwar Bonimy</h3>
+							<div class="title" style="color:#666;font-weight:600;">Founder &amp; President</div>
+							<p style="margin-top:8px;color:#444;">As the Founder and President of True Shield Security Services, Anwar oversees all business operations, strategic growth initiatives, and client partnerships. With over 25 years of experience in the security industry, Anwar brings deep expertise in operational management, business development, and leading large-scale security teams. His hands-on background and commitment to professionalism form the foundation of True Shield’s high standards, trusted service, and client-first approach.</p>
+						</div>
+					</div>
+
+					<!-- Management team cards -->
+					<div class="management-grid" style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+							<div class="team-card" style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);display:flex;gap:12px;align-items:flex-start;">
+								<div class="avatar">
+									<img src="assets/balwinder.jpeg" alt="Balwinder Bhatia">
+								</div>
+							<div>
+								<h4 style="margin:0 0 6px 0;">Balwinder Bhatia</h4>
+								<div class="title" style="color:#666;font-weight:600;">President &amp; Chief Operating Officer</div>
+								<p style="margin:8px 0 0 0;color:#444;">Experienced operations leader focused on scalable service delivery and operational excellence.</p>
+							</div>
+						</div>
+
+							<div class="team-card" style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);display:flex;gap:12px;align-items:flex-start;">
+								<div class="avatar">
+									<img src="assets/harsimran.jpeg" alt="Harsimran Bajwa">
+								</div>
+							<div>
+								<h4 style="margin:0 0 6px 0;">Harsimran Bajwa</h4>
+								<div class="title" style="color:#666;font-weight:600;">President &amp; Chief Commercial Officer</div>
+								<p style="margin:8px 0 0 0;color:#444;">Commercial and client engagement leader driving growth, partnerships, and service innovation.</p>
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<aside style="display:flex;flex-direction:column;gap:12px;">
@@ -94,5 +130,7 @@ With over 25 years of diverse experience in the security industry, my background
 			<div style="font-size:13px;color:#bfbfbf;">© 2025 True Shield Security. All rights reserved.</div>
 		</div>
 	</footer>
+
+	<script src="/assets/js/header.js"></script>
 </body>
 </html>

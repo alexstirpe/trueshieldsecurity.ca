@@ -1,167 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TrueShield Security – Website In Development</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #0f0f0f;
-            color: #ffffff;
-            display: flex;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 500px;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        a.email-link {
-            color: #4da3ff;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        a.email-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Hidden button styling */
-        .secret-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            opacity: 0; /* Make it invisible */
-        }
-
-        /* Modal styling */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: #1e1e1e;
-            color: #ffffff;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .modal-content h2 {
-            margin: 0 0 10px 0;
-            font-size: 20px;
-        }
-
-        .modal-content p {
-            margin: 0 0 20px 0;
-            font-size: 14px;
-            color: #bfbfbf;
-        }
-
-        .modal-content input {
-            width: 90%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #4da3ff;
-            border-radius: 4px;
-            background: #0f0f0f;
-            color: #ffffff;
-        }
-
-        .modal-content button {
-            padding: 10px 20px;
-            background: #4da3ff;
-            border: none;
-            border-radius: 4px;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-        .modal-content button:hover {
-            background: #357ae8;
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>True Shield Security — Professional Security Services</title>
+    <link rel="stylesheet" href="/css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- styles moved to /assets/css/style.css -->
 </head>
-
 <body>
-    <div class="container">
-        <h1>TrueShield Security</h1>
-        <p>Our website is currently under development.</p>
-        <p>For direct assistance, please contact us at:</p>
-        <p>
-            <a class="email-link" href="mailto:abonimy.tss@gmail.com">
-                abonimy.tss@gmail.com
-            </a>
-        </p>
-        <p>We appreciate your patience.</p>
-    </div>
+        <header class="site-header">
+            <div class="site-header-inner">
+                <div class="brand">
+                    <a href="/index.html" aria-label="True Shield Security home">
+                        <img src="/assets/logo.png" alt="True Shield Security logo">
+                    </a>
+                </div>
 
-    <!-- Hidden button -->
-    <button class="secret-button" onclick="showModal()"></button>
+                <nav aria-label="Main navigation">
+                    <a href="/index.html">Home</a>
+                    <a href="/about.html">About</a>
+                    <a href="/services.html">Services</a>
+                    <a href="/contact.html">Contact</a>
+                </nav>
 
-    <!-- Modal -->
-    <div class="modal" id="passwordModal">
-        <div class="modal-content">
-            <h2>Molex Development</h2>
-            <p>✨ Built with pride. Fueled by community. Powered by vision. ✨</p>
-            <p>Administrator Login</p>
-            <input type="password" id="adminPassword" placeholder="Enter password" />
-            <button onclick="checkPassword()">Login</button>
+                <div class="header-cta">
+                    <a class="btn" href="/contact.html">Request a Quote</a>
+                </div>
+            </div>
+        </header>
+
+    <main>
+        <section class="hero" aria-label="Hero">
+            <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1562072544-9b3f8e7a6a7b?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-inner">
+                <h1 style="margin:0 0 12px 0; font-size:clamp(24px,4.2vw,42px); line-height:1.05;">Professional Security Services You Can Trust</h1>
+                <p style="margin:0 0 18px 0; max-width:720px; color:rgba(255,255,255,0.95);">True Shield Security delivers highly trained personnel and tailored security solutions for commercial, residential, and institutional clients. Our focus is prevention, protection, and peace of mind.</p>
+            </div>
+        </section>
+
+        <section class="container" aria-label="Services overview">
+            <h2 style="margin:0 0 12px 0;">Our Key Services</h2>
+            <p style="margin:0 0 16px 0; color:#444;">Comprehensive, reliable security solutions delivered by vetted professionals.</p>
+
+            <div class="services-grid">
+                <article class="card">
+                    <img src="assets/consult-tss.jpg" alt="Consult">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px 0;">Security Consulting & Risk Assessment</h3>
+                        <a class="learn-more" href="/services.html#manned">Learn More →</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/front-desk-tss.jpg" alt="Front Desk">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px 0;">Concierge & Front Desk</h3>
+                        <a class="learn-more" href="/services.html#mobile">Learn More →</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/manned-guarding-tss.jpg" alt="Manned Guarding">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px 0;">Manned Guarding</h3>
+                        <a class="learn-more" href="/services.html#concierge">Learn More →</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/mobile-patrol-tss.jpg" alt="Mobile Patrols">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px 0;">Mobile Patrols</h3>
+                        <a class="learn-more" href="/services.html#alarm">Learn More →</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img src="assets/Loss-Prevention-tss.jpg" alt="Loss Prevention">
+                    <div class="card-body">
+                        <h3 style="margin:0 0 8px 0;">Loss Prevention</h3>
+                        <a class="learn-more" href="/services.html#consulting">Learn More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <section style="margin-top:28px;" class="about-teaser">
+                <div style="flex:1 1 420px;">
+                    <h2 style="margin-top:0;">About True Shield Security</h2>
+                    <p style="color:#444;">Founded to provide industry-leading protection, True Shield Security combines experience, training, and a client-first approach. We deliver discreet, dependable security services tailored for businesses and communities.</p>
+                    <a class="btn" href="/about.html">Learn About Us</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=900&auto=format&fit=crop" alt="About preview" style="height:140px; border-radius:8px; object-fit:cover;">
+            </section>
+        </section>
+
+        <section class="cta-banner" aria-label="Call to action">
+            <h3 style="margin:0 0 8px 0;">Ready to improve your security posture?</h3>
+            <p style="margin:0 0 12px 0; color:rgba(255,255,255,0.85);">Request a complimentary consultation and quote from our experienced team.</p>
+            <a class="btn" href="/contact.html">Request a Quote</a>
+        </section>
+    </main>
+
+    <footer>
+        <div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
+            <div style="margin-bottom:6px;">Email: <a href="mailto:info@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">info@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: Phone Number Coming Soon</div>
+            <div style="font-size:13px;color:#bfbfbf;">© <span id="year">2025</span> True Shield Security. All rights reserved.</div>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        // Show the modal
-        function showModal() {
-            document.getElementById('passwordModal').style.display = 'flex';
-        }
-
-        // Check the password
-        function checkPassword() {
-            const password = document.getElementById('adminPassword').value;
-            const correctPassword = "Molex1144"; // Replace with your secure password
-
-            if (password === correctPassword) {
-                window.location.href = "home.html"; // Redirect to home.html
-            } else {
-                alert("Incorrect password. Access denied.");
-            }
-        }
-    </script>
+    <script src="/assets/js/header.js"></script>
 </body>
 </html>
