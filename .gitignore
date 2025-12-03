@@ -1,0 +1,10 @@
+# Ignore Mac system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+
+# Ignore any log files
+*.log
+
+# Placeholder for future ignores if new tools, environments, or files are added
