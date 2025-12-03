@@ -1,115 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>True Shield Security — Professional Security Services</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <!-- styles moved to /assets/css/style.css -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Shield Security — Professional Protection Services</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+
 <body>
-        <header class="site-header">
-            <div class="brand">
-                <a href="/index.html" aria-label="True Shield Security home">
-                    <img src="/assets/logo.png" alt="True Shield Security logo">
-                </a>
-            </div>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="brand">
+            <a href="home.html" aria-label="True Shield Security Homepage">
+                <img src="/assets/logo.png" alt="True Shield Security logo">
+            </a>
+        </div>
 
-            <nav aria-label="Main navigation">
-                <a href="/index.html">Home</a>
-                <a href="/about.html">About</a>
-                <a href="/services.html">Services</a>
-                <a href="/contact.html">Contact</a>
-            </nav>
+        <nav aria-label="Main Navigation">
+            <a href="home.html" aria-current="page" data-kpi="nav-click">Home</a>
+            <a href="about.html" data-kpi="nav-click">About</a>
+            <a href="services.html" data-kpi="nav-click">Services</a>
+            <a href="contact.html" data-kpi="nav-click">Contact</a>
+        </nav>
 
-            <div class="header-cta">
-                <a class="btn" href="/contact.html">Request a Quote</a>
-            </div>
-        </header>
+        <a href="contact.html" 
+           class="btn header-cta" 
+           role="button"
+           data-kpi="cta-click">
+           Request a Quote
+        </a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Primary introduction">
+        <div class="hero-bg" 
+             style="background-image:url('https://images.unsplash.com/photo-1562072544-9b3f8e7a6a7b?q=80&w=1600&auto=format&fit=crop');">
+        </div>
+
+        <div class="hero-inner">
+            <h1>Professional Security Services You Can Trust</h1>
+            <p>
+                True Shield Security provides dependable, highly trained personnel dedicated to 
+                protection, prevention, and peace of mind for properties and communities.
+            </p>
+
+            <a href="contact.html" 
+               class="btn"
+               role="button"
+               data-kpi="cta-click">
+               Request a Quote
+            </a>
+        </div>
+    </section>
 
     <main>
-        <section class="hero" aria-label="Hero">
-            <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1562072544-9b3f8e7a6a7b?q=80&w=1600&auto=format&fit=crop');"></div>
-            <div class="hero-inner">
-                <h1 style="margin:0 0 12px 0; font-size:clamp(24px,4.2vw,42px); line-height:1.05;">Professional Security Services You Can Trust</h1>
-                <p style="margin:0 0 18px 0; max-width:720px; color:rgba(255,255,255,0.95);">True Shield Security delivers highly trained personnel and tailored security solutions for commercial, residential, and institutional clients. Our focus is prevention, protection, and peace of mind.</p>
-            </div>
-        </section>
 
-        <section class="container" aria-label="Services overview">
-            <h2 style="margin:0 0 12px 0;">Our Key Services</h2>
-            <p style="margin:0 0 16px 0; color:#444;">Comprehensive, reliable security solutions delivered by vetted professionals.</p>
+        <!-- Services Overview -->
+        <section class="container" aria-labelledby="services-title">
+            <h2 id="services-title">Our Core Security Services</h2>
+            <p>Comprehensive protection delivered by licensed, trained professionals.</p>
 
             <div class="services-grid">
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600&auto=format&fit=crop" alt="Manned Guarding">
+
+                <article class="card" data-kpi="service-click">
+                    <img src="https://source.unsplash.com/400x300/?security,guard" 
+                         alt="Licensed security guard performing access control">
                     <div class="card-body">
-                        <h3 style="margin:0 0 8px 0;">Manned Guarding</h3>
-                        <p>Professional on-site guards for access control, patrols, and incident response. Uniformed, trained, and licensed to represent your property with a strong security presence.</p>
-                        <a href="/services.html#manned">Learn More →</a>
+                        <h3>Manned Guarding</h3>
+                        <p>Uniformed, professional guards for access control, site protection, and incident response.</p>
+                        <a href="services.html#manned">Learn More →</a>
                     </div>
                 </article>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop" alt="Mobile Patrols">
+                <article class="card" data-kpi="service-click">
+                    <img src="https://source.unsplash.com/400x300/?security,patrol" 
+                         alt="Mobile patrol vehicle conducting site check">
                     <div class="card-body">
-                        <h3 style="margin:0 0 8px 0;">Mobile Patrols</h3>
-                        <p>Scheduled and random patrols with rapid response capabilities to deter crime and provide ongoing presence across multiple sites.</p>
-                        <a href="/services.html#mobile">Learn More →</a>
+                        <h3>Mobile Patrols</h3>
+                        <p>Random and scheduled patrols to deter threats and maintain visible presence.</p>
+                        <a href="services.html#mobile">Learn More →</a>
                     </div>
                 </article>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600&auto=format&fit=crop" alt="Concierge and Front Desk">
+                <article class="card" data-kpi="service-click">
+                    <img src="https://source.unsplash.com/400x300/?security,concierge" 
+                         alt="Front desk concierge assisting visitors">
                     <div class="card-body">
-                        <h3 style="margin:0 0 8px 0;">Concierge & Front Desk</h3>
-                        <p>Professional reception and front-desk services blending customer service with security awareness to maintain controlled, welcoming facilities.</p>
-                        <a href="/services.html#concierge">Learn More →</a>
+                        <h3>Concierge & Front Desk</h3>
+                        <p>Customer-service focused personnel trained in security awareness and access management.</p>
+                        <a href="services.html#concierge">Learn More →</a>
                     </div>
                 </article>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1533236898248-8f1d66d7f68f?q=80&w=1600&auto=format&fit=crop" alt="Alarm Response">
+                <article class="card" data-kpi="service-click">
+                    <img src="https://source.unsplash.com/400x300/?security,alarm" 
+                         alt="Security officer responding to alarm notification">
                     <div class="card-body">
-                        <h3 style="margin:0 0 8px 0;">Alarm Response</h3>
-                        <p>Rapid, professional alarm response and verification to protect assets and reduce risk following an alarm activation or incident.</p>
-                        <a href="/services.html#alarm">Learn More →</a>
+                        <h3>Alarm Response</h3>
+                        <p>Rapid response to alarm activations to verify incidents and ensure safety.</p>
+                        <a href="services.html#alarm">Learn More →</a>
                     </div>
                 </article>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1556761175-129418cb2dfe?q=80&w=1600&auto=format&fit=crop" alt="Security Consulting">
+                <article class="card" data-kpi="service-click">
+                    <img src="https://source.unsplash.com/400x300/?security,consulting" 
+                         alt="Security consultant reviewing a risk assessment plan">
                     <div class="card-body">
-                        <h3 style="margin:0 0 8px 0;">Security Consulting</h3>
-                        <p>Comprehensive risk assessments and practical security strategies to align protection measures with your operational needs and budget.</p>
-                        <a href="/services.html#consulting">Learn More →</a>
+                        <h3>Security Consulting</h3>
+                        <p>Risk assessments and strategic planning tailored to your operational needs.</p>
+                        <a href="services.html#consulting">Learn More →</a>
                     </div>
                 </article>
+
             </div>
-
-            <section style="margin-top:28px;" class="about-teaser">
-                <div style="flex:1 1 420px;">
-                    <h2 style="margin-top:0;">About True Shield Security</h2>
-                    <p style="color:#444;">Founded to provide industry-leading protection, True Shield Security combines experience, training, and a client-first approach. We deliver discreet, dependable security services tailored for businesses and communities.</p>
-                    <a class="btn" href="/about.html">Learn About Us</a>
-                </div>
-                <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=900&auto=format&fit=crop" alt="About preview" style="height:140px; border-radius:8px; object-fit:cover;">
-            </section>
         </section>
 
-        <section class="cta-banner" aria-label="Call to action">
-            <h3 style="margin:0 0 8px 0;">Ready to improve your security posture?</h3>
-            <p style="margin:0 0 12px 0; color:rgba(255,255,255,0.85);">Request a complimentary consultation and quote from our experienced team.</p>
-            <a class="btn" href="/contact.html">Request a Quote</a>
+        <!-- Why Choose Us -->
+        <section class="container" aria-labelledby="trust-title">
+            <h2 id="trust-title">Why Clients Trust True Shield Security</h2>
+
+            <ul>
+                <li>Licensed, insured, and compliant with industry regulations</li>
+                <li>Professional, well-presented personnel</li>
+                <li>Clear communication and reliable service</li>
+                <li>Preventative, proactive security approach</li>
+                <li>Tailored solutions for unique site requirements</li>
+                <li>Strong commitment to client satisfaction</li>
+            </ul>
+        </section>
+
+        <!-- Professional Standards -->
+        <section class="container" aria-labelledby="standards-title">
+            <h2 id="standards-title">Our Commitment to Excellence</h2>
+            <p>
+                We maintain high expectations for all team members, ensuring a consistent, professional 
+                security presence across every site we protect.
+            </p>
+
+            <ul>
+                <li>Professionally trained personnel</li>
+                <li>Uniformed, reliable presence</li>
+                <li>Focused on prevention, awareness, and communication</li>
+            </ul>
+        </section>
+
+        <!-- Certifications Placeholder -->
+        <section class="container" aria-labelledby="certifications-title">
+            <h2 id="certifications-title">Certifications & Compliance</h2>
+            <p>True Shield Security meets or exceeds industry requirements and best practices.</p>
+
+            <ul class="certifications">
+                <li>• Compliance Standard Placeholder</li>
+                <li>• Certification Placeholder</li>
+                <li>• Training Standard Placeholder</li>
+                <li>• Licensing Placeholder</li>
+            </ul>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="cta-banner" aria-label="Final call to action">
+            <h2>Ready to improve your security posture?</h2>
+            <a href="contact.html" class="btn" role="button" data-kpi="cta-click">Contact Us</a>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
-            <div style="margin-bottom:6px;">Email: <a href="mailto:info@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">info@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: Phone Number Coming Soon</div>
-            <div style="font-size:13px;color:#bfbfbf;">© <span id="year">2025</span> True Shield Security. All rights reserved.</div>
-        </div>
+        <address>
+            Contact us: 
+            <a href="mailto:info@trueshieldsecurity.ca">info@trueshieldsecurity.ca</a><br>
+            Phone: Phone Number Coming Soon
+        </address>
+        <p>&copy; <span id="year"></span> True Shield Security. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        // KPI event hooks will be added in Phase 1.2
+    </script>
 
 </body>
 </html>
