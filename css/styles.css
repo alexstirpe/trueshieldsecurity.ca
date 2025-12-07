@@ -58,9 +58,17 @@ body {
 .header-cta { margin-left:12px; }
 
 /* Header scroll transparency */
-.site-header { transition: background-color 200ms ease, box-shadow 200ms ease; }
-.site-header.transparent { background: transparent; box-shadow: none; }
-.site-header.transparent nav a { color: var(--white); }
+.site-header { transition: background-color 240ms ease, box-shadow 240ms ease, backdrop-filter 240ms ease; }
+/* default: solid dark header */
+.site-header { background: var(--bg); }
+/* when scrolled: slightly translucent light gray with subtle shadow */
+.site-header.scrolled { background: rgba(242,242,242,0.92); color: #111; box-shadow: 0 6px 18px rgba(8,8,8,0.08); backdrop-filter: blur(6px); }
+.site-header.scrolled nav a { color: #111; }
+.site-header.scrolled .brand img { filter: none; }
+/* Backwards compat: some pages or older scripts may toggle `.transparent` */
+.site-header.transparent { background: rgba(242,242,242,0.92); color: #111; box-shadow: 0 6px 18px rgba(8,8,8,0.08); backdrop-filter: blur(6px); }
+.site-header.transparent nav a { color: #111; }
+.site-header.transparent .brand img { filter: none; }
 
 /* Hero */
 .hero { position: relative; color: var(--white); min-height: 56vh; display:flex; align-items:center; }
