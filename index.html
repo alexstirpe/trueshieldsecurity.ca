@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TrueShield Security – Website In Development</title>
 
+    <link rel="stylesheet" href="/css/styles.css">
+
     <style>
         body {
             margin: 0;
@@ -119,6 +121,27 @@
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="brand">
+                <a href="/index.html" aria-label="True Shield Security home">
+                    <img src="/assets/logo.png" alt="True Shield Security logo">
+                </a>
+            </div>
+
+            <nav aria-label="Main navigation">
+                <a href="/home.html">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
+
+            <div class="header-cta">
+                <a class="btn" href="/contact.html">Request a Quote</a>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
         <h1>TrueShield Security</h1>
         <p>Our website is currently under development.</p>
@@ -145,7 +168,8 @@
         </div>
     </div>
 
-    <script>
+        <script src="/assets/js/header.js"></script>
+        <script>
         // Show the modal
         function showModal() {
             document.getElementById('passwordModal').style.display = 'flex';
