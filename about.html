@@ -12,18 +12,18 @@
 			<header class="site-header">
 				<div class="site-header-inner">
 					<div class="brand">
-						<a href="/index.html"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
+						<a href="/home.html"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
 					</div>
 
 					<nav aria-label="Main navigation">
-						<a href="/index.html">Home</a>
+						<a href="/home.html">Home</a>
 						<a href="/about.html">About</a>
 						<a href="/services.html">Services</a>
 						<a href="/contact.html">Contact</a>
 					</nav>
 
 					<div class="header-cta">
-						<a class="btn" href="/contact.html">Request a Quote</a>
+						<a class="btn btn-primary" href="/contact.html">Request a Quote</a>
 					</div>
 				</div>
 			</header>
@@ -41,53 +41,40 @@
 					<p style="color:#333;">To become one of the leading providers of security services in Canada, known for our customer service, quick response, professionalism, open flexibilty, affordable rates and dedication to client requirements.</p>
 
 					<h2 style="margin-top:22px;">Management Team</h2>
-					<!-- Professional founder card for Anwar Bonimy with placeholder image (matches team-card style) -->
-					<div class="founder-card" style="display:flex;gap:12px;align-items:flex-start;background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);">
-						<div class="avatar">
-							<img src="assets/anwar.jpg" alt="Anwar Bonimy">
-						</div>
-						<div>
-							<h3 style="margin:0 0 6px 0;">Anwar Bonimy</h3>
-							<div class="title" style="color:#666;font-weight:600;">Founder &amp; President</div>
-							<p style="margin-top:8px;color:#444;">As the Founder and President of True Shield Security Services, Anwar oversees all business operations, strategic growth initiatives, and client partnerships. With over 25 years of experience in the security industry, Anwar brings deep expertise in operational management, business development, and leading large-scale security teams. His hands-on background and commitment to professionalism form the foundation of True Shield’s high standards, trusted service, and client-first approach.</p>
-						</div>
-					</div>
+					<!-- Founder block consolidated below -->
 
-					<!-- Management team cards -->
-					<div class="management-grid" style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
-							<div class="team-card" style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);display:flex;gap:12px;align-items:flex-start;">
-								<div class="avatar">
-									<img src="assets/balwinder.jpeg" alt="Balwinder Bhatia">
-								</div>
-							<div>
-								<h4 style="margin:0 0 6px 0;">Balwinder Bhatia</h4>
-								<div class="title" style="color:#666;font-weight:600;">President &amp; Chief Operating Officer</div>
-								<p style="margin:8px 0 0 0;color:#444;">Experienced operations leader focused on scalable service delivery and operational excellence.</p>
+						<!-- Founder and management team (now using structured cards) -->
+						<div class="team-card">
+							<div class="avatar"><img src="/assets/anwar.jpg" alt="Anwar Bonimy"></div>
+							<div class="content">
+								<h4>Anwar Bonimy</h4>
+								<div class="title">Founder &amp; President</div>
+								<p>As the Founder and President of True Shield Security Services, Anwar oversees all business operations, strategic growth initiatives, and client partnerships. With over 25 years of experience in the security industry, Anwar brings deep expertise in operational management, business development, and leading large-scale security teams.</p>
 							</div>
 						</div>
 
-							<div class="team-card" style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);display:flex;gap:12px;align-items:flex-start;">
-								<div class="avatar">
-									<img src="assets/harsimran.jpeg" alt="Harsimran Bajwa">
-								</div>
-							<div>
-								<h4 style="margin:0 0 6px 0;">Harsimran Bajwa</h4>
-								<div class="title" style="color:#666;font-weight:600;">President &amp; Chief Commercial Officer</div>
-								<p style="margin:8px 0 0 0;color:#444;">Commercial and client engagement leader driving growth, partnerships, and service innovation.</p>
+					<div class="management-grid">
+						<div class="team-card">
+							<div class="avatar"><img src="assets/balwinder.jpeg" alt="Balwinder Bhatia"></div>
+							<div class="content">
+								<h4>Balwinder Bhatia</h4>
+								<div class="title">President &amp; Chief Operating Officer</div>
+								<p>Experienced operations leader focused on scalable service delivery and operational excellence.</p>
+							</div>
+						</div>
+
+						<div class="team-card">
+							<div class="avatar"><img src="assets/harsimran.jpeg" alt="Harsimran Bajwa"></div>
+							<div class="content">
+								<h4>Harsimran Bajwa</h4>
+								<div class="title">Chief Commercial Officer</div>
+								<p>Commercial and client engagement leader driving growth, partnerships, and service innovation.</p>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<aside style="display:flex;flex-direction:column;gap:12px;">
-					<img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=900&auto=format&fit=crop" alt="Founder Anwar" style="width:100%; border-radius:8px; object-fit:cover; height:220px;">
-					<div style="background:#fff;padding:12px;border-radius:8px;box-shadow:0 6px 18px rgba(2,2,2,0.05);">
-						<strong>Contact</strong>
-						<div style="margin-top:8px;">Email: <a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a></div>
-						<div style="margin-top:4px;">Phone: Phone Number Coming Soon</div>
-						<a href="/contact.html" class="btn" style="display:inline-block;margin-top:10px;background:var(--gold);color:#111;padding:8px 12px;border-radius:6px;text-decoration:none;font-weight:700;">Request a Quote</a>
-					</div>
-				</aside>
+				<!-- Right-hand contact block removed; content consolidated into main column -->
 			</div>
 		</section>
 
@@ -98,35 +85,37 @@
 			<div class="values">
 				<div class="value">
 					<h4 style="margin:0 0 8px 0;">Integrity & Trust</h4>
-					<p style="margin:0;color:#555;">We believe true security starts with transparent, honest communication — a standard we uphold to counter the industry’s frequent lack of clarity. Our commitment is to remain reliable and trustworthy in every interaction with clients, employees, and partners.</p>
+					<p style="margin:0;color:#555;">We believe true security starts with transparency and honesty, ensuring reliable and trustworthy interactions with clients, employees, and partners.</p>
 				</div>
 
 				<div class="value">
 					<h4 style="margin:0 0 8px 0;">Professionalism & Excellence</h4>
-					<p style="margin:0;color:#555;">We uphold a high standard of service that directly addresses industry issues like poor scheduling and lack of accountability. Every security professional is thoroughly trained, disciplined, and a true reflection of our commitment to excellence.</p>
+					<p style="margin:0;color:#555;">Every security professional is thoroughly trained and disciplined, upholding high standards to deliver consistent, exceptional service.</p>
 				</div>
 
 				<div class="value">
 					<h4 style="margin:0 0 8px 0;">Respect & Empowerment</h4>
-					<p style="margin:0;color:#555;">We counter the industry’s undervaluing of security personnel by investing in fair compensation, proper training, and real growth opportunities—empowering our team to take pride in their work and deliver exceptional service.</p>
+					<p style="margin:0;color:#555;">We invest in fair compensation, proper training, and growth opportunities, empowering our team to take pride in their work.</p>
 				</div>
+			</div>
 
+			<div class="values-centered">
 				<div class="value">
 					<h4 style="margin:0 0 8px 0;">Vigilance & Reliability</h4>
-					<p style="margin:0;color:#555;">We understand that effective security requires a constant state of vigilance and alertness, and we ensure our clients' security is continuously monitored so we can respond swiftly to any incident.</p>
+					<p style="margin:0;color:#555;">Our team maintains constant alertness, continuously monitoring security to respond swiftly to any incident.</p>
 				</div>
 
 				<div class="value">
 					<h4 style="margin:0 0 8px 0;">Accountability & Proactiveness</h4>
-					<p style="margin:0;color:#555;">We take full ownership of the security process—from planning and training to field execution—allowing us to address issues before they escalate and ensure every client feels protected, supported, and confident in our ability to protect what matters most to them.</p>
+					<p style="margin:0;color:#555;">We take full ownership of the security process, addressing issues before they escalate to ensure our clients feel safe and supported.</p>
 				</div>
 			</div>
 		</section>
 	</main>
 
 	<footer>
-		<div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
-			<div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: Phone Number Coming Soon</div>
+			<div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
+			<div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
 			<div style="font-size:13px;color:#bfbfbf;">© 2025 True Shield Security. All rights reserved.</div>
 		</div>
 	</footer>

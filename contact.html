@@ -12,18 +12,18 @@
 			<header class="site-header">
 				<div class="site-header-inner">
 					<div class="brand">
-						<a href="/index.html"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
+						<a href="/home.html"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
 					</div>
 
 					<nav aria-label="Main navigation">
-						<a href="/index.html">Home</a>
+						<a href="/home.html">Home</a>
 						<a href="/about.html">About</a>
 						<a href="/services.html">Services</a>
 						<a href="/contact.html">Contact</a>
 					</nav>
 
 					<div class="header-cta">
-						<a class="btn" href="/contact.html">Request a Quote</a>
+						<a class="btn btn-primary" href="/contact.html">Request a Quote</a>
 					</div>
 				</div>
 			</header>
@@ -48,7 +48,7 @@
 						<label for="message">Message</label>
 						<textarea id="message" name="message" placeholder="Tell us about your security needs" required></textarea>
 
-						<button type="submit" class="submit">Request a Quote</button>
+						<button type="submit" class="submit btn-primary">Request a Quote</button>
 					</form>
 				</div>
 
@@ -56,23 +56,43 @@
 					<div class="contact-info">
 						<strong>Contact Information</strong>
 						<div style="margin-top:8px;">Email: <a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a></div>
-						<div style="margin-top:6px;">Phone: Phone Number Coming Soon</div>
+						<div style="margin-top:6px;">Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
 						<div style="margin-top:10px;"><a href="/services.html" style="text-decoration:none;color:var(--bg);font-weight:700;">View Services →</a></div>
 					</div>
 
-					<div class="map-placeholder" aria-hidden="true">
-						Static map / location placeholder
+					<!-- Static map image (simple SVG) placed directly under contact info -->
+					<div style="margin-top:6px;text-align:center;">
+						<a class="map-static-link" href="https://www.google.com/maps?q=45+Wynford+Heights+Crescent+North+York+ON+M3C+1L2" target="_blank" rel="noopener" aria-label="Open map in Google Maps">
+							<svg width="320" height="160" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="false">
+								<rect width="100%" height="100%" fill="#f3f4f6" rx="8"/>
+								<g transform="translate(18,12)">
+									<rect width="264" height="120" fill="#fff" rx="8"/>
+									<g transform="translate(12,12)" fill="#c9a447" font-family="Inter,Arial" font-size="12">
+										<circle cx="18" cy="18" r="10" fill="#c9a447" />
+									</g>
+									<text x="20" y="80" fill="#223" font-family="Inter,Arial" font-size="12">45 Wynford Heights Crescent</text>
+									<text x="20" y="96" fill="#6b7280" font-family="Inter,Arial" font-size="11">North York, ON M3C 1L2</text>
+								</g>
+							</svg>
+						</a>
+						<div style="margin-top:8px;"><a class="btn-primary" href="https://www.google.com/maps?q=45+Wynford+Heights+Crescent+North+York+ON+M3C+1L2" target="_blank" rel="noopener">Open Map</a></div>
 					</div>
 				</aside>
 			</div>
+
+
 		</section>
 	</main>
 
 	<footer>
 		<div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
-			<div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: Phone Number Coming Soon</div>
+			<div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
 			<div style="font-size:13px;color:#bfbfbf;">© 2025 True Shield Security. All rights reserved.</div>
 		</div>
 	</footer>
+
+	<script src="/assets/js/header.js"></script>
+    
+
 </body>
 </html>
