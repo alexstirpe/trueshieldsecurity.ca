@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "visual:test",
+			"problemMatcher": [
+				"$go"
+			],
+			"label": "npm: visual:test",
+			"detail": "node tools/visual-test.js"
+		}
+	]
+}
