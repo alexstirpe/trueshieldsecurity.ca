@@ -1,3 +1,28 @@
+<!--
+	============================================================
+	Project Name: "The Awarded Contract" — True Shield Security Services Website Project
+	Description: A fully original website created using basic HTML, CSS,
+							 and JavaScript elements for a locally owned and operated 
+							 manned security services — True Shield Security. Designed and built as a
+							 collaborative portfolio project.
+
+	Created By:
+		• Alexandria S.
+		• Mohammed M.
+
+	Date: December 9, 2025
+	Location: Ontario, Canada
+
+	Ownership: This site was developed in partnership with True Shield Security Services,
+						 with full approval and contribution from the business.
+						 All content and design elements are original and tailored
+						 to represent the brand's local presence and mission.
+
+	Copyright © 2025 True Shield Security Services & Molex | All Rights Reserved.
+
+	✨ Built with pride. Fueled by community. Powered by vision. ✨
+	============================================================
+-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +33,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="services-page">
+	<a href="#main-content" class="skip-link">Skip to main content</a>
 	<header class="site-header">
 		<div class="site-header-inner">
 			<div class="brand">
@@ -17,7 +43,7 @@
 			<nav aria-label="Main navigation">
 				<a href="/home.html">Home</a>
 				<a href="/about.html">About</a>
-				<a href="/services.html">Services</a>
+				<a href="/services.html" aria-current="page">Services</a>
 				<a href="/contact.html">Contact</a>
 			</nav>
 
@@ -27,14 +53,14 @@
 		</div>
 	</header>
 
-	<main>
+	<main id="main-content">
 		<section class="container" aria-label="Services overview">
 			<h1>Our Services</h1>
 			<p style="color:#444;">Comprehensive security solutions for commercial, residential and institutional clients.</p>
 
 			<div class="services-grid">
 				<article class="card">
-					<div class="card-media"><img src="/assets/consult-tss.jpg" alt="Consult" style="object-position:center 36%; transform:scale(0.92); transform-origin:center;" /></div>
+									<div class="card-media"><img src="/assets/consult-tss.jpg" alt="Consult" loading="lazy" style="object-position:center 36%; transform:scale(0.92); transform-origin:center;" /></div>
 					<div class="card-body">
 						<h3>Security Consulting & Risk Assessment</h3>
 						<p>We provide professional, actionable advice to identify vulnerabilities, quantify risk, and develop pragmatic plans that reduce exposure and improve resilience.</p>
@@ -48,7 +74,7 @@
 				</article>
 
 				<article class="card">
-					<div class="card-media"><img src="/assets/front-desk-tss.jpg" alt="Front Desk"></div>
+					<div class="card-media"><img src="/assets/front-desk-tss.jpg" alt="Front Desk" loading="lazy"></div>
 					<div class="card-body">
 						<h3>Concierge & Front Desk</h3>
 						<p>Our concierge guards provide a secure and welcoming first point of contact, managing access, assisting visitors, and responding to incidents with professionalism.</p>
@@ -62,7 +88,7 @@
 				</article>
 
 				<article class="card">
-					<div class="card-media"><img src="/assets/manned-guarding-tss.jpg" alt="Manned Guarding"></div>
+					<div class="card-media"><img src="/assets/manned-guarding-tss.jpg" alt="Manned Guarding" loading="lazy"></div>
 					<div class="card-body">
 						<h3>Manned Guarding</h3>
 						<p>Our highly trained static security officers help keep your property safe by providing visible deterrence, controlled access, and rapid incident response. We offer tailored security solutions for:</p>
@@ -76,7 +102,7 @@
 				</article>
 
 				<article class="card">
-					<div class="card-media"><img src="/assets/mobile-patrol-tss.jpg" alt="Mobile Patrols"></div>
+					<div class="card-media"><img src="/assets/mobile-patrol-tss.jpg" alt="Mobile Patrols" loading="lazy"></div>
 					<div class="card-body">
 						<h3>Mobile Patrols</h3>
 						<p>Our mobile patrols provide a visible security presence, ensuring rapid response to alarms and unusual activity across your property.</p>
@@ -90,7 +116,7 @@
 				</article>
 
 				<article class="card">
-					<div class="card-media"><img src="/assets/Loss-Prevention-tss.jpg" alt="Loss Prevention"></div>
+					<div class="card-media"><img src="/assets/Loss-Prevention-tss.jpg" alt="Loss Prevention" loading="lazy"></div>
 					<div class="card-body">
 						<h3>Loss Prevention</h3>
 						<p>Our loss prevention officers safeguard retail environments, minimizing theft and protecting assets.</p>
@@ -109,7 +135,14 @@
 	</main>
 
 	<footer>
-			<div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
+		<nav class="footer-nav" aria-label="Footer directory">
+			<a href="/home.html">Home</a>
+			<a href="/about.html">About</a>
+			<a href="/services.html">Services</a>
+			<a href="/contact.html">Contact</a>
+			<a href="/privacy.html">Privacy</a>
+		</nav>
+		<div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
 			<div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
 			<div style="font-size:13px;color:#bfbfbf;">© 2025 True Shield Security. All rights reserved.</div>
 		</div>
