@@ -44,6 +44,14 @@ test.describe('Responsive + Accessibility checks', () => {
         await page.goto(`http://localhost:8080${pagePath}`, { waitUntil: 'networkidle' });
         await page.waitForTimeout(500);
 
+        // wait for a visible level-one heading if present to avoid axe running
+        // before the page's semantic content has rendered (reduces false positives)
+        try {
+          await page.waitForSelector('h1', { timeout: 2000 });
+        } catch (e) {
+          // if no h1 appears within timeout, continue and let axe report the issue
+        }
+
         const fileBase = safeName(vp.name);
         await page.screenshot({ path: path.join(outDir, `${fileBase}.png`), fullPage: true });
 
