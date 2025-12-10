@@ -1,0 +1,14 @@
+{
+  "name": "trueshieldsecurity-site-dev",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "stylelint": "^15.10.0",
+    "stylelint-config-standard": "^32.0.0",
+    "puppeteer": "^21.3.8"
+  },
+  "scripts": {
+    "lint:css": "stylelint \"css/*.css\" \"assets/css/*.css\" --fix",
+    "visual:test": "node tools/visual-test.js"
+  }
+}
