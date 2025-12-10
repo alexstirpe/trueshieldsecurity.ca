@@ -132,6 +132,10 @@ body {
 /* Accessibility utilities (non-hero fixes) */
 .fix-contrast-dark { color: var(--text) !important; text-shadow: none !important; }
 
+/* stronger utility for very low contrast text on dark backgrounds */
+/* stronger utility for very low contrast text on dark backgrounds */
+.fix-contrast-dark-strong { color: var(--white) !important; background: rgba(0,0,0,0.6); padding: 0 2px; }
+
 /* Animated modern card styles for services grid */
 .services-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; }
 .card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)); border-radius:12px; overflow:hidden; transition:transform .28s cubic-bezier(.22,.9,.34,1), box-shadow .28s ease; will-change:transform;

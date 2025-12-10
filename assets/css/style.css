@@ -90,7 +90,7 @@ body {
 	}
 
 /* Accessibility utilities (non-hero fixes) */
-.fix-contrast-dark { color: var(--text) !important; text-shadow: none !important; }
+.fix-contrast-dark-strong { color: var(--white) !important; background: rgba(0,0,0,0.6); padding: 0 2px; }
 
 /* Animated modern card styles for services grid */
 .services-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; }
