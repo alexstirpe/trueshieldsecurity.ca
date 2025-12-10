@@ -1,1 +1,45 @@
+/*
+	============================================================
+	Project Name: "The Awarded Contract" — True Shield Security Services Website Project
+	Description: A fully original website created using basic HTML, CSS,
+							 and JavaScript elements for a locally owned and operated 
+							 manned security services — True Shield Security. Designed and built as a
+							 collaborative portfolio project.
+
+	Created By:
+		• Alexandria S.
+		• Mohammed M.
+
+	Date: December 9, 2025
+	Location: Ontario, Canada
+
+	Ownership: This site was developed in partnership with True Shield Security Services,
+						 with full approval and contribution from the business.
+						 All content and design elements are original and tailored
+						 to represent the brand's local presence and mission.
+
+	Copyright © 2025 True Shield Security Services & Molex | All Rights Reserved.
+
+	✨ Built with pride. Fueled by community. Powered by vision. ✨
+	============================================================
+*/
+
 // Placeholder for main JavaScript file
+document.addEventListener('DOMContentLoaded', function(){
+	const cards = document.querySelectorAll('.home .services-grid .card');
+	cards.forEach((card, idx)=>{
+		card.style.setProperty('--i', idx);
+		card.setAttribute('data-animated','true');
+	});
+
+	const observer = new IntersectionObserver((entries)=>{
+		entries.forEach(e=>{
+			if(e.isIntersecting){
+				e.target.classList.add('is-visible');
+				observer.unobserve(e.target);
+			}
+		});
+	},{ threshold: 0.18 });
+
+	cards.forEach(c=>observer.observe(c));
+});
