@@ -1,9 +1,5 @@
-const { test } = require('@playwright/test');
+const { test, devices } = require('@playwright/test');
 const { injectAxe, checkA11y } = require('@axe-core/playwright');
-const { devices } = require('@playwright/test');
-const { test } = require('@playwright/test');
-const { injectAxe, checkA11y } = require('@axe-core/playwright');
-const { devices } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
