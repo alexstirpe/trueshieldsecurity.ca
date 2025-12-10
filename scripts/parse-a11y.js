@@ -24,15 +24,30 @@ function summarize() {
       const raw = fs.readFileSync(file, 'utf8');
       const j = JSON.parse(raw);
       const v = j.violations || [];
-      for (const viol of v) {
+  for (const viol of v) {
         const id = viol.id || 'unknown';
-        if (!summary.violations[id]) summary.violations[id] = { count: 0, examples: {} };
-        summary.violations[id].count += 1;
-        // collect a few example targets
+        // determine whether this violation entry actually represents a failure
+        // (axe sometimes includes informational nodes; for page-has-heading-one we
+        // only want to count cases where the html element is targeted or the
+        // failureSummary indicates a missing level-one heading)
+        let isFailure = false;
+        const examples = {};
         for (const node of viol.nodes || []) {
           const targets = (node.target || []).slice(0,2).join(' | ');
-          if (!targets) continue;
-          summary.violations[id].examples[targets] = (summary.violations[id].examples[targets] || 0) + 1;
+          // mark failure when the html root is the target or the failureSummary
+          // explicitly states the page must have a level-one heading.
+          if (/^html$/i.test(targets) || (node.failureSummary && /must have a level-one heading/i.test(node.failureSummary))) {
+            isFailure = true;
+          }
+          if (targets) examples[targets] = (examples[targets] || 0) + 1;
+        }
+  if (!isFailure) continue;
+  if (!summary.violations[id]) summary.violations[id] = { count: 0, examples: {} };
+  summary.violations[id].count += 1;
+  console.log('Counting violation', id, 'from', file);
+        // merge examples
+        for (const k of Object.keys(examples)) {
+          summary.violations[id].examples[k] = (summary.violations[id].examples[k] || 0) + examples[k];
         }
       }
     } catch (e) {
