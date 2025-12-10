@@ -1,3 +1,28 @@
+<!--
+	============================================================
+	Project Name: "The Awarded Contract" — True Shield Security Services Website Project
+	Description: A fully original website created using basic HTML, CSS,
+							 and JavaScript elements for a locally owned and operated 
+							 manned security services — True Shield Security. Designed and built as a
+							 collaborative portfolio project.
+
+	Created By:
+		• Alexandria S.
+		• Mohammed M.
+
+	Date: December 9, 2025
+	Location: Ontario, Canada
+
+	Ownership: This site was developed in partnership with True Shield Security Services,
+						 with full approval and contribution from the business.
+						 All content and design elements are original and tailored
+						 to represent the brand's local presence and mission.
+
+	Copyright © 2025 True Shield Security Services & Molex | All Rights Reserved.
+
+	✨ Built with pride. Fueled by community. Powered by vision. ✨
+	============================================================
+-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,6 +34,7 @@
 	<!-- styles moved to /assets/css/style.css -->
 </head>
 <body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
 			<header class="site-header">
 				<div class="site-header-inner">
 					<div class="brand">
@@ -19,7 +45,7 @@
 						<a href="/home.html">Home</a>
 						<a href="/about.html">About</a>
 						<a href="/services.html">Services</a>
-						<a href="/contact.html">Contact</a>
+						<a href="/contact.html" aria-current="page">Contact</a>
 					</nav>
 
 					<div class="header-cta">
@@ -28,7 +54,7 @@
 				</div>
 			</header>
 
-	<main>
+	<main id="main-content">
 		<section class="container">
 			<h1>Contact Us</h1>
 			<p style="color:#444;">Complete the form below to request a quote or to speak with a member of our team.</p>
@@ -53,29 +79,40 @@
 				</div>
 
 				<aside style="display:flex;flex-direction:column;gap:14px;">
-					<div class="contact-info">
-						<strong>Contact Information</strong>
-						<div style="margin-top:8px;">Email: <a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a></div>
-						<div style="margin-top:6px;">Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
-						<div style="margin-top:10px;"><a href="/services.html" style="text-decoration:none;color:var(--bg);font-weight:700;">View Services →</a></div>
-					</div>
-
 					<!-- Static map image (simple SVG) placed directly under contact info -->
+					<!-- Embedded interactive Google Map -->
 					<div style="margin-top:6px;text-align:center;">
-						<a class="map-static-link" href="https://www.google.com/maps?q=45+Wynford+Heights+Crescent+North+York+ON+M3C+1L2" target="_blank" rel="noopener" aria-label="Open map in Google Maps">
-							<svg width="320" height="160" viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="false">
-								<rect width="100%" height="100%" fill="#f3f4f6" rx="8"/>
-								<g transform="translate(18,12)">
-									<rect width="264" height="120" fill="#fff" rx="8"/>
-									<g transform="translate(12,12)" fill="#c9a447" font-family="Inter,Arial" font-size="12">
-										<circle cx="18" cy="18" r="10" fill="#c9a447" />
-									</g>
-									<text x="20" y="80" fill="#223" font-family="Inter,Arial" font-size="12">45 Wynford Heights Crescent</text>
-									<text x="20" y="96" fill="#6b7280" font-family="Inter,Arial" font-size="11">North York, ON M3C 1L2</text>
-								</g>
-							</svg>
-						</a>
-						<div style="margin-top:8px;"><a class="btn-primary" href="https://www.google.com/maps?q=45+Wynford+Heights+Crescent+North+York+ON+M3C+1L2" target="_blank" rel="noopener">Open Map</a></div>
+						<div class="map-embed-wrap" style="max-width:100%;border-radius:8px;overflow:hidden;">
+							<iframe title="True Shield Security — office location map and directions" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.2504610943547!2d-79.32751442381938!3d43.72612357109865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cda33a021f49%3A0x35107845498fb8a5!2s45%20Wynford%20Heights%20Crescent%2C%20North%20York%2C%20ON%20M3C%201L2!5e0!3m2!1sen!2sca!4v1765319673251!5m2!1sen!2sca" width="600" height="350" style="border:0;width:100%;height:260px;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+						<!-- directions container using asset icons (moved into contact-info with circular logos) -->
+						<div class="contact-info card-style-dark" style="margin-top:10px;padding:12px;">
+							<strong>Contact Information</strong>
+							<div class="contact-lines" style="margin-top:8px;">
+								<div>Email: <a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a></div>
+								<div style="margin-top:6px;">Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
+								<div style="margin-top:10px;"><a href="/services.html" style="text-decoration:none;color:var(--bg);font-weight:700;">View Services →</a></div>
+							</div>
+							<div class="map-cta-logos" style="margin-top:12px;">
+								<p class="map-cta-note" style="margin:0 0 8px 0;color:#334148;font-size:0.95rem;text-align:center;">Click an icon below for quick directions using your preferred driving app</p>
+								<div class="map-cta-icons" style="display:flex;gap:10px;align-items:center;justify-content:center;">
+									<a class="map-cta-logo" href="https://www.google.com/maps/dir/?api=1&destination=45+Wynford+Heights+Crescent+North+York+ON+M3C+1L2" target="_blank" rel="noopener noreferrer" aria-label="Open Google Maps" role="button">
+										<img src="/assets/google-maps-logo.png" alt="Google Maps" loading="lazy">
+									</a>
+									<a class="map-cta-logo" href="https://maps.apple.com/?daddr=45+Wynford+Heights+Crescent+North+York+ON+M3C+1L2" target="_blank" rel="noopener noreferrer" aria-label="Open Apple Maps" role="button">
+										<img src="/assets/Apple-maps-logo.png" alt="Apple Maps" loading="lazy">
+									</a>
+									<a class="map-cta-logo" href="https://ul.waze.com/ul?venue_id=183959989.1839403285.2560886&overview=yes" target="_blank" rel="noopener noreferrer" aria-label="Open Waze" role="button">
+										<!-- Inline SVG wrapper that uses the PNG as an <image> element.
+											 preserveAspectRatio="xMidYMid slice" ensures the PNG fills and is cropped to the circle. -->
+										<svg viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+											<defs></defs>
+											<image href="/assets/waze-logo.png" x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice"></image>
+										</svg>
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</aside>
 			</div>
@@ -85,6 +122,13 @@
 	</main>
 
 	<footer>
+		<nav class="footer-nav" aria-label="Footer directory">
+			<a href="/home.html">Home</a>
+			<a href="/about.html">About</a>
+			<a href="/services.html">Services</a>
+			<a href="/contact.html">Contact</a>
+			<a href="/privacy.html">Privacy</a>
+		</nav>
 		<div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
 			<div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
 			<div style="font-size:13px;color:#bfbfbf;">© 2025 True Shield Security. All rights reserved.</div>
