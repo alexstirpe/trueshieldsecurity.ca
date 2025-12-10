@@ -1,0 +1,14 @@
+{
+  "totalReports": 30,
+  "violations": {
+    "page-has-heading-one": {
+      "count": 6,
+      "examples": [
+        {
+          "selector": "html",
+          "count": 6
+        }
+      ]
+    }
+  }
+}

@@ -146,6 +146,7 @@
 </head>
 
 <body>
+    <main>
     <div class="container">
         <h1>TrueShield Security</h1>
         <p>Our website is currently under development.</p>
@@ -157,9 +158,12 @@
         </p>
         <p>We appreciate your patience.</p>
     </div>
+    </main>
 
-    <!-- Hidden button -->
-    <button class="secret-button" onclick="showModal()"></button>
+    <!-- Hidden button (accessible) -->
+    <button class="secret-button" onclick="showModal()" aria-label="Open admin login">
+        <span class="visually-hidden">Open admin login</span>
+    </button>
 
     <!-- Modal -->
     <div class="modal" id="passwordModal">
@@ -190,5 +194,15 @@
             }
         }
     </script>
+    <style>
+        /* visually-hidden utility */
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px; width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+    </style>
 </body>
 </html>
