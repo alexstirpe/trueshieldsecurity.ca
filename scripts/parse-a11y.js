@@ -44,7 +44,6 @@ function summarize() {
   if (!isFailure) continue;
   if (!summary.violations[id]) summary.violations[id] = { count: 0, examples: {} };
   summary.violations[id].count += 1;
-  console.log('Counting violation', id, 'from', file);
         // merge examples
         for (const k of Object.keys(examples)) {
           summary.violations[id].examples[k] = (summary.violations[id].examples[k] || 0) + examples[k];
