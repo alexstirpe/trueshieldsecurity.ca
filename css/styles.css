@@ -79,7 +79,9 @@ body {
 	/* Reduce hero min-height on short viewports/landscape phones to avoid overflow gaps */
 	.hero { min-height: 40vh; }
 	/* Ensure hero media image doesn't create overflow on short landscape devices */
-	.hero-media .security-main-asset { height: auto; max-height: 60vh; }
+	/* Ensure hero media fills the hero on narrow screens */
+	.hero-media { position:absolute; inset:0; height:100%; }
+	.hero-media .security-main-asset { width:100%; height:100%; object-fit:cover; max-height:none !important; }
 	/* Increase touch target sizes and ensure nav wraps cleanly */
 	nav a { padding:12px 10px; }
 	/* Slightly increase bottom padding to avoid footer gap on small devices */
@@ -186,6 +188,37 @@ body {
 	.header-cta { display:none; }
 }
 
+/* Mobile fix: avoid 100vw hero + translate causing horizontal overflow and a
+   visible right-side band on some mobile browsers. On small screens use
+   full-width layout without the 100vw shift and hide any accidental overflow. */
+@media (max-width: 640px) {
+	.hero {
+		width: 100% !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		left: 0 !important;
+		transform: none !important;
+	}
+	.site-header .site-header-inner { padding-left: 12px !important; padding-right: 12px !important; }
+	html, body { overflow-x: hidden; }
+
+	/* Extra safety: ensure hero media and background never exceed viewport width */
+	.hero, .hero-media, .hero .hero-bg { max-width: 100% !important; overflow-x: hidden !important; }
+	.hero-media img, .hero-media .security-main-asset { max-width: 100% !important; width: 100% !important; height: auto !important; display: block !important; }
+
+	/* On small screens remove the heavy overlay so the image shows clearly under the slogan */
+	.hero-media .hero-media-overlay { background: none !important; }
+
+	/* Ensure hero and media always fill the hero area to avoid showing page background */
+	.hero { position: relative; min-height: 64vh; overflow: hidden !important; background: none !important; }
+	.hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center top; height: 100%; width: 100%; }
+	.hero-media { position: absolute; inset: 0; height: 100%; width: 100%; z-index: 0; }
+	.hero-media .security-main-asset { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+	/* Mobile framing: nudge focal point to the right and gently zoom out so 'SECURITY' is visible */
+	.hero-media .security-main-asset { object-position: 65% center !important; transform: scale(0.92) translateZ(0); transform-origin: center center; }
+	.hero .hero-inner { position: relative; z-index: 2; }
+}
+
 /* Ensure nav links wrap cleanly on narrow devices and remain touch-friendly */
 nav { flex-wrap:wrap; }
 nav a { padding:10px 8px; }
@@ -204,16 +237,32 @@ h3, h4 { color:#111; font-family: Inter, system-ui, -apple-system, "Segoe UI", R
 /* default: solid dark header */
 .site-header { background: var(--bg); }
 /* when scrolled: slightly translucent light gray with subtle shadow */
-.site-header.scrolled { background: rgba(220,220,220,0.92) !important; color: #111 !important; box-shadow: 0 6px 18px rgba(8,8,8,0.06) !important; backdrop-filter: blur(6px) !important; }
-.site-header.scrolled nav a { color: #111 !important; }
+.site-header.scrolled {
+	background: transparent !important;
+	color: #ffffff !important;
+	box-shadow: none !important;
+	backdrop-filter: none !important;
+}
+.site-header.scrolled nav a { color: #ffffff !important; }
 .site-header.scrolled .brand img { filter: none !important; }
-.site-header.transparent { background: rgba(220,220,220,0.92) !important; color: #111 !important; box-shadow: 0 6px 18px rgba(8,8,8,0.06) !important; backdrop-filter: blur(6px) !important; }
-.site-header.transparent nav a { color: #111 !important; }
+/* Backwards compat: normalize `.transparent` to be truly transparent so the
+   hero shows through and no gray band remains. */
+.site-header.transparent {
+	background: transparent !important;
+	color: #ffffff !important;
+	box-shadow: none !important;
+	backdrop-filter: none !important;
+}
+.site-header.transparent nav a { color: #ffffff !important; }
 .site-header.transparent .brand img { filter: none !important; }
 
+/* Previously there were per-page overrides forcing homepage transparency.
+	Remove those so header behavior is driven centrally by `.scrolled` and
+	by the JS toggle, keeping behavior consistent across pages. */
+
 /* Hero */
-.hero { position: relative; color: var(--white); min-height: 64vh; display:flex; align-items:center; margin-left: calc(-1 * (100vw - 100%)/2); margin-right: calc(-1 * (100vw - 100%)/2); width:100vw; left:50%; transform:translateX(-50%); overflow:hidden; border-radius:0; }
- .hero .hero-bg { position:absolute; inset:0; background-position:center; background-size:cover; filter:brightness(.45); }
+.hero { position: relative; color: var(--white); min-height: 64vh; display:flex; align-items:center; width:100%; left:0; transform:none; margin:0; overflow:hidden; border-radius:0; }
+.hero .hero-bg { position:absolute; inset:0; background-position:center; background-size:cover; filter:brightness(.45); }
  /* hero-media sits on top of the hero-bg and behind the hero-inner content */
  .hero-media { position:absolute; inset:0; z-index:0; display:block; overflow:hidden; border-radius:0; height:100%; width:100%; }
  .hero-media .security-main-asset { width:100%; height:100%; object-fit:cover; display:block; border-radius:0; max-height:100%; }
@@ -234,6 +283,16 @@ h3, h4 { color:#111; font-family: Inter, system-ui, -apple-system, "Segoe UI", R
 	 contain: paint; /* limits painting to the overlay and avoids layout side-effects in some engines */
  }
  .hero .hero-inner { position:relative; z-index:2; max-width:1400px; margin:0 auto; padding:24px 16px 12px 16px; text-align:left; }
+
+@media (min-width: 641px) {
+	.hero {
+		width: 100vw;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-left: calc(-1 * (100vw - 100%)/2);
+		margin-right: calc(-1 * (100vw - 100%)/2);
+	}
+}
 
 /* Landscape short-viewport safety: avoid hero overflow / visible gaps on short devices */
 @media (orientation: landscape) and (max-height: 520px) {
@@ -260,10 +319,30 @@ footer { flex-shrink: 0; padding-top: 8px; }
 
 /* Cards */
 .services-grid { display:flex; flex-direction:column; gap:12px; margin-top:12px; margin-bottom:6px; }
-.services-page .services-grid .card { display:grid; grid-template-columns:420px 1fr; gap:16px; align-items:stretch; background:#fff; box-shadow:0 8px 22px rgba(2,2,2,0.06); border-radius:10px; overflow:hidden; border-left:6px solid rgba(201,164,71,0.04); min-height:300px; }
+.services-page .services-grid .card { display:grid; grid-template-columns:420px 1fr; gap:16px; align-items:start; background:#fff; box-shadow:0 8px 22px rgba(2,2,2,0.06); border-radius:10px; overflow:hidden; border-left:6px solid rgba(201,164,71,0.04); min-height:0; }
 .services-grid .card img { display:none; }
-.services-page .services-grid .card-media { width:100%; height:100%; flex:0 0 auto; }
-.services-page .services-grid .card-media img { width:100%; height:100%; object-fit:cover; object-position:center center; transition: transform 180ms ease; display:block; }
+
+/* Modern predictable media container: maintain aspect ratio while allowing per-card sizing */
+.services-page .services-grid .card-media {
+	width:100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	display:block;
+}
+.services-page .services-grid .card-media img {
+	width:100%;
+	height:100%;
+	object-fit:cover;
+	object-position:center center;
+	display:block;
+	transition: transform 180ms ease;
+}
+
+/* Small screens: stack and cap heights to avoid oversized containers */
+@media (max-width: 640px) {
+	.services-page .services-grid .card { grid-template-columns: 1fr; gap:12px; }
+	.services-page .services-grid .card-media { aspect-ratio: 3/2; }
+}
 
 /* Target the first service image on the services page to show less-cropped framing */
 .services-page .services-grid .card:first-of-type .card-media img {
@@ -311,6 +390,17 @@ footer { flex-shrink: 0; padding-top: 8px; }
 }
 
 .about-teaser { display:flex; gap:24px; align-items:center; flex-wrap:wrap; }
+/* About page hero background should only apply when the page body opts in */
+body.about-preview .hero, body.about .hero { background:#f7f7f7; padding:36px 20px 18px; border-bottom:1px solid #eee; }
+
+/* DEBUG: temporary helpers to identify hero layering/overflow issues.
+	Enable by adding `debug-hero` to the <body> (e.g. in DevTools: document.body.classList.add('debug-hero'))
+	Remove after debugging. */
+body.debug-hero .hero { outline: 3px solid rgba(255,0,0,0.9); }
+body.debug-hero .hero-bg { outline: 3px solid rgba(0,160,0,0.9); background-color: transparent !important; }
+body.debug-hero .hero-media { outline: 3px solid rgba(0,112,255,0.9); }
+body.debug-hero .hero-media img { outline: 3px dashed rgba(255,165,0,0.95); max-height: none !important; }
+body.debug-hero .hero-media-overlay { outline: 3px dotted rgba(128,0,128,0.95); background: rgba(255,255,255,0.02) !important; }
 .cta-banner { background:var(--bg); color:var(--white); text-align:center; padding:28px 20px; margin-top:28px; }
 
 /* Decorative About page background (promoted from preview CSS)
@@ -319,7 +409,7 @@ footer { flex-shrink: 0; padding-top: 8px; }
 */
 body.about-preview {
 	position: relative;
-	background-color: #fbfbfb;
+	background-color: #ffffff; /* change to white per request */
 }
 body.about-preview::before {
 	content: "";
@@ -327,14 +417,50 @@ body.about-preview::before {
 	inset: 0;
 	background-image: url('/assets/pg_bg_design-elements_tss.png');
 	background-repeat: no-repeat;
-	background-position: right top;
-	background-size: contain;
-	opacity: 0.12;
+	background-position: center top;
+	background-size: cover;
+	/* show original PNG colors (no color-destructive filters) and reduced opacity per request */
+	opacity: 0.59;
+	filter: none;
+	mix-blend-mode: normal;
 	pointer-events: none;
 	z-index: 0;
 }
+/* add a subtle dark wash to increase contrast for text on top */
+body.about-preview::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	/* subtle dark gradient for depth, then a gold tint using the exact site gold RGB */
+	background:
+		linear-gradient(180deg, rgba(4,8,12,0.02) 0%, rgba(4,8,12,0.04) 60%),
+		rgba(201,164,71,0.12);
+	pointer-events: none;
+	z-index: 0;
+	/* use screen to brighten gold highlights against the image */
+	mix-blend-mode: screen;
+}
 /* Ensure main content sits above the decorative background */
 body.about-preview > * { position: relative; z-index: 1; }
+
+@media (max-width: 1200px) {
+	body.about-preview::before { background-position: center top; background-size: 80vw; opacity: 0.23; }
+	body.about-preview::after { background: linear-gradient(180deg, rgba(4,8,12,0.08) 0%, rgba(4,8,12,0.12) 100%); }
+}
+
+@media (max-width: 480px) {
+	body.about-preview::before { background-position: center top; background-size: cover; opacity: 0.27; }
+	body.about-preview::after { background: linear-gradient(180deg, rgba(4,8,12,0.10) 0%, rgba(4,8,12,0.16) 100%); }
+}
+
+/* Ensure consult/service images fill their containers in the canonical stylesheet as well */
+.consult-img, .concierge-img, .manned-img, .mobile-img, .loss-img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
+	display: block !important;
+}
+.consult-img { object-position: center 36% !important; transform: none !important; }
 
 /* Services page */
 .service { display:flex; gap:18px; margin-bottom:26px; align-items:stretch; flex-wrap:wrap; }
@@ -636,6 +762,16 @@ footer .footer-nav a:hover, footer .footer-nav a:focus { color: var(--bg); backg
 	margin-top: 6px;
 }
 
+/* Force consult/service images to fill their .card-media containers like other cards */
+.consult-img, .concierge-img, .manned-img, .mobile-img, .loss-img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
+	display: block !important;
+}
+
+.consult-img { object-position: center 36% !important; }
+
 .founder-card li {
 	display: flex;
 	align-items: center;
@@ -761,4 +897,32 @@ footer .footer-nav a:hover, footer .footer-nav a:focus { color: var(--bg); backg
 	.home .services-grid .card-media { height: 180px !important; }
 	.home .services-grid .card img { height: 180px !important; }
 	.home .services-grid .card { grid-template-rows: auto auto !important; }
+}
+
+/* Local-only mobile override: stack services cards and constrain media heights for narrow viewports */
+@media (max-width: 480px) {
+  .services-page .services-grid .card {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    align-items: start !important;
+    min-height: auto !important;
+  }
+  .services-page .services-grid .card-media,
+  .services-grid .card-media,
+  .card-media {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 180px !important;
+    overflow: hidden !important;
+  }
+  .services-page .services-grid .card-media img,
+  .services-grid .card img,
+  .card-media img {
+    width: 100% !important;
+    height: 160px !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  .services-page .services-grid .card .card-body { padding: 10px !important; }
 }

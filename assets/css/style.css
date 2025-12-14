@@ -67,6 +67,9 @@ body {
 	-webkit-backdrop-filter: saturate(120%) blur(6px);
 	backdrop-filter: saturate(120%) blur(6px);
 }
+
+
+/* Header behavior is controlled by JS toggling the `.scrolled` class. */
 	 /* keep Learn More gold by default; on hover make it high-contrast black */
 	 .home .services-grid .card .card-body .learn-more:hover,
 	 .home .services-grid .card .card-body a:hover { color: #000000 !important; transform:translateX(4px); }
@@ -136,6 +139,47 @@ body {
 		.site-header { padding:8px 0; }
 	}
 
+/* Prevent header briefly switching to translucent gray on small mobile viewports */
+@media (max-width: 420px) {
+	.site-header.scrolled, .site-header.transparent {
+		background: var(--bg) !important;
+		color: var(--white) !important;
+		box-shadow: none !important;
+	}
+	.site-header.scrolled nav a, .site-header.transparent nav a { color: var(--white) !important; }
+}
+
+/* Mobile fix: avoid 100vw hero + translate causing horizontal overflow and a
+   visible right-side band on some mobile browsers. On small screens use
+   full-width layout without the 100vw shift and hide any accidental overflow. */
+@media (max-width: 640px) {
+	.hero {
+		width: 100% !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		left: 0 !important;
+		transform: none !important;
+	}
+	.site-header .site-header-inner { padding-left: 12px !important; padding-right: 12px !important; }
+	html, body { overflow-x: hidden; }
+
+	/* Extra safety: ensure hero media and background never exceed viewport width */
+	.hero, .hero-media, .hero .hero-bg { max-width: 100% !important; overflow-x: hidden !important; }
+	.hero-media img, .hero-media .security-main-asset { max-width: 100% !important; width: 100% !important; height: auto !important; display: block !important; }
+
+	/* On small screens remove the heavy overlay so the image shows clearly under the slogan */
+	.hero-media .hero-media-overlay { background: none !important; }
+
+	/* Ensure hero and media always fill the hero area to avoid showing page background */
+	.hero { position: relative; min-height: 64vh; overflow: hidden !important; background: none !important; }
+	.hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center top; height: 100%; width: 100%; }
+	.hero-media { position: absolute; inset: 0; height: 100%; width: 100%; z-index: 0; }
+	.hero-media .security-main-asset { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+	/* Mobile framing: nudge the focal point to the right and gently zoom out so 'SECURITY' is visible */
+	.hero-media .security-main-asset { object-position: 65% center !important; transform: scale(0.92) translateZ(0); transform-origin: center center; }
+	.hero .hero-inner { position: relative; z-index: 2; }
+}
+
 @media (orientation: landscape) and (max-width: 420px) {
 	.header-cta { display:none; }
 }
@@ -155,20 +199,32 @@ h3, h4 { color:#111; font-family: Inter, system-ui, -apple-system, "Segoe UI", R
 /* Header scroll behavior: solid at top, light translucent on scroll */
 .site-header { transition: background-color 240ms ease, box-shadow 240ms ease, backdrop-filter 240ms ease; }
 .site-header { background: var(--bg); }
-.site-header.scrolled { background: rgba(245,245,245,0.96); color: #111; box-shadow: 0 6px 18px rgba(8,8,8,0.06); backdrop-filter: blur(6px); }
-.site-header.scrolled nav a { color: #111; }
-.site-header.scrolled .brand img { filter: none; }
-/* Backwards compat: some pages or older scripts may toggle `.transparent` */
-.site-header.transparent { background: rgba(220,220,220,0.92); color: #111; box-shadow: 0 6px 18px rgba(8,8,8,0.06); backdrop-filter: blur(6px); }
-.site-header.transparent nav a { color: #111; }
-.site-header.transparent .brand img { filter: none; }
-/* Backwards compat: some pages or older scripts may toggle `.transparent` */
-.site-header.transparent { background: #f5f5f5; color: #111; box-shadow: 0 6px 18px rgba(8,8,8,0.06); }
-.site-header.transparent nav a { color: #111; }
-.site-header.transparent .brand img { filter: none; }
+.site-header.scrolled {
+	/* On scroll we make the header transparent so the site content shows through.
+	   The default (no .scrolled) state remains the dark header (var(--bg)). */
+	background: transparent !important;
+	color: #ffffff !important;
+	box-shadow: none !important;
+	backdrop-filter: none !important;
+}
+.site-header.scrolled nav a { color: #ffffff !important; }
+.site-header.scrolled .brand img { filter: none !important; }
+/* Backwards compat: normalize `.transparent` to be truly transparent so
+   the hero shows through and no gray band remains. */
+.site-header.transparent {
+	background: transparent !important;
+	color: #ffffff !important;
+	box-shadow: none !important;
+	backdrop-filter: none !important;
+}
+.site-header.transparent nav a { color: #ffffff !important; }
+.site-header.transparent .brand img { filter: none !important; }
 
 /* Hero */
-.hero { position: relative; color: var(--white); min-height: 64vh; display:flex; align-items:center; margin-left: calc(-1 * (100vw - 100%)/2); margin-right: calc(-1 * (100vw - 100%)/2); width:100vw; left:50%; transform:translateX(-50%); overflow:hidden; border-radius:0; }
+/* Mobile-first hero: avoid 100vw/tranform math on small screens which can
+	cause horizontal overflow (mobile browser scrollbar inclusion). Width is
+	normal flow on mobile; desktop restores full-bleed in the media query below. */
+.hero { position: relative; color: var(--white); min-height: 64vh; display:flex; align-items:center; width:100%; left:0; transform:none; margin:0; overflow:hidden; border-radius:0; }
 .hero .hero-bg { position:absolute; inset:0; background-position:center; background-size:cover; filter:brightness(.45); }
 /* hero-media sits on top of the hero-bg and behind the hero-inner content */
 .hero-media { position:absolute; inset:0; z-index:0; display:block; overflow:hidden; border-radius:0; height:100%; width:100%; }
@@ -180,6 +236,17 @@ h3, h4 { color:#111; font-family: Inter, system-ui, -apple-system, "Segoe UI", R
 .hero .hero-inner h1 { color: #fff; text-shadow: 0 8px 30px rgba(1,6,10,0.72); font-size: clamp(28px, 4.8vw, 48px); line-height:1.02; margin-bottom:8px; font-weight:800; }
 .hero .hero-inner p { color: rgba(255,255,255,0.92); text-shadow: 0 6px 18px rgba(1,6,10,0.55); font-size: clamp(14px, 1.6vw, 18px); max-width: 720px; }
 .hero .hero-inner { position:relative; z-index:2; max-width:1400px; margin:0 auto; padding:40px 20px; text-align:left; }
+
+/* Desktop-only full-bleed hero to preserve the original visual intent */
+@media (min-width: 641px) {
+	.hero {
+		width: 100vw;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-left: calc(-1 * (100vw - 100%)/2);
+		margin-right: calc(-1 * (100vw - 100%)/2);
+	}
+}
 
 /* Layout */
 .container { max-width:1400px; margin:0 auto; padding:12px 12px; }
@@ -232,8 +299,10 @@ main { padding-bottom: 12px; flex: 1 0 auto; }
 .services-page .services-grid .card .card-body { padding:16px; flex:1; display:flex; flex-direction:column; justify-content:flex-start; gap:8px; }
 .services-grid .card h3 { margin:0 0 8px 0; font-size:20px; font-weight:800; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#071018; }
 .services-grid .card img { width:360px; height:100%; object-fit:cover; flex:0 0 360px; display:block; }
+services-grid .card img { width:100%; height:auto; object-fit:cover; flex:0 0 360px; max-width:360px; display:block; }
 .services-grid .card .card-body { padding:16px; flex:1; display:flex; flex-direction:column; justify-content:space-between; gap:8px; }
 .services-grid .card-media { width:360px; flex:0 0 360px; height:100%; overflow:hidden; display:block; }
+services-grid .card-media { width:360px; flex:0 0 360px; height:auto; max-height:420px; overflow:hidden; display:block; }
 .services-grid .card-media img { width:100%; height:100%; object-fit:cover; display:block; }
 .services-grid .card p { margin:0 0 12px 0; color:#34414a; line-height:1.6; }
 .services-grid .card a { color:var(--bg); font-weight:700; text-decoration:none; margin-top:8px; }
@@ -244,6 +313,7 @@ main { padding-bottom: 12px; flex: 1 0 auto; }
 	color: #071018 !important;
 	border-left: 4px solid var(--gold) !important;
 	box-shadow: 0 10px 28px rgba(16,24,40,0.06) !important;
+	display:grid; grid-template-columns:420px 1fr; gap:16px; align-items:start; border-radius:10px; overflow:hidden; border-left:6px solid rgba(201,164,71,0.04); min-height:0;
 }
 .services-page .services-grid .card h3 { color: #071018 !important; }
 .services-page .services-grid .card:hover h3 { color: var(--gold-dark) !important; }
@@ -326,6 +396,53 @@ main { padding-bottom: 12px; flex: 1 0 auto; }
 	.avatar { width:64px; height:64px; min-width:64px; }
 }
 
+/* Header responsive improvements: wrap and center nav/CTA on narrower viewports */
+@media (max-width: 768px) {
+	.site-header .site-header-inner {
+		flex-wrap: wrap;
+	}
+
+	nav {
+		width: 100%;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.header-cta {
+		width: 100%;
+		justify-content: center;
+		margin-top: 8px;
+	}
+}
+
+/* Use aspect-ratio for predictable media containers on the services page */
+.services-page .services-grid .card-media { aspect-ratio: 16 / 9; overflow: hidden; }
+.services-page .services-grid .card-media img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* Progressive enhancement: use background-image on small viewports for select cards
+   while keeping the <img> in the DOM for accessibility. JavaScript will toggle
+   `body.use-bg` on small screens and apply the background image from the
+   element's `data-bg-src` attribute. */
+.bg-enhance { background-repeat: no-repeat; background-size: cover; background-position: center center; }
+
+/* When JS enables the enhancement, hide the original <img> visually but keep it available
+   to screen readers and assistive tech (preserve DOM order and alt attribute). */
+body.use-bg .bg-enhance img {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px !important;
+	height: 1px !important;
+	overflow: hidden !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	clip-path: inset(50%) !important;
+}
+
+/* Mobile-specific background positioning for top-aligned heads */
+@media (max-width: 640px) {
+	body.use-bg .bg-enhance { background-position: center top !important; }
+}
+
 @media (max-width:640px) {
 	.avatar { width:48px; height:48px; min-width:48px; }
 }
@@ -351,7 +468,9 @@ main { padding-bottom: 12px; flex: 1 0 auto; }
 	/* Reduce hero min-height on short viewports/landscape phones to avoid overflow gaps */
 	.hero { min-height: 40vh; }
 	/* Ensure hero media image doesn't create overflow on short landscape devices */
-	.hero-media .security-main-asset { height: auto; max-height: 60vh; }
+	/* Allow hero media to fully fill the hero on narrow screens */
+	.hero-media { position:absolute; inset:0; height:100%; }
+	.hero-media .security-main-asset { width:100%; height:100%; object-fit:cover; max-height:none !important; }
 	/* Increase touch target sizes and ensure nav wraps cleanly */
 	nav a { padding:12px 10px; }
 	/* Slightly increase bottom padding to avoid footer gap on small devices */
@@ -371,6 +490,16 @@ main { padding-bottom: 12px; flex: 1 0 auto; }
 }
 /* Contact page */
 .contact-grid { display:grid; grid-template-columns:1fr 360px; gap:24px; align-items:start; }
+
+/* Legal / Privacy page styling */
+.legal-page main.container { max-width:960px; margin:24px auto; padding:24px; background: #fff; border-radius:10px; box-shadow: 0 8px 20px rgba(2,8,12,0.04); }
+.legal-page h1 { font-size:28px; margin-bottom:6px; }
+.legal-page .muted { color:#68727a; margin-bottom:18px; }
+.legal-page h2 { margin-top:18px; margin-bottom:8px; font-size:18px; }
+.legal-page p, .legal-page li { color:#34414a; line-height:1.7; }
+.legal-page ul { margin-left:20px; }
+.legal-page section { margin-bottom:16px; }
+
 form { background:#fff; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(2,2,2,0.06); }
 label { display:block; margin:8px 0 6px; font-weight:600; color:#222; }
 input[type="text"], input[type="email"], input[type="tel"], textarea { width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-size:14px; }
@@ -487,9 +616,54 @@ label { color:#223; }
 
 /* (preview-only about background moved to canonical `/css/styles.css`) */
 
-/* About page */
-.hero { background:#f7f7f7; padding:36px 20px 18px; border-bottom:1px solid #eee; }
+/* About page (scope to About body class so other pages keep transparent hero) */
+body.about-preview .hero, body.about .hero { background:#f7f7f7; padding:36px 20px 18px; border-bottom:1px solid #eee; }
 .grid-2 { display:grid; grid-template-columns:1fr; gap:24px; align-items:start; max-width:900px; }
+
+/* Decorative background for About preview (mirrors canonical) */
+body.about-preview { position: relative; background-color: #ffffff; }
+body.about-preview::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		background-image: url('/assets/pg_bg_design-elements_tss.png');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	/* reduced by 0.05 per request */
+	opacity: 0.80;
+	filter: none;
+	mix-blend-mode: normal;
+		pointer-events: none;
+		z-index: 0;
+}
+body.about-preview::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(4,8,12,0.02) 0%, rgba(4,8,12,0.04) 60%), rgba(201,164,71,0.12);
+	pointer-events: none;
+	z-index: 0;
+	mix-blend-mode: screen;
+}
+body.about-preview > * { position: relative; z-index: 1; }
+@media (max-width: 900px) {
+	body.about-preview::before { background-position: center top; background-size: cover; opacity: 0.23; }
+	body.about-preview::after { background: linear-gradient(180deg, rgba(4,8,12,0.08) 0%, rgba(4,8,12,0.12) 100%); }
+}
+@media (max-width: 480px) {
+	body.about-preview::before { background-position: center top; background-size: cover; opacity: 0.27; }
+	body.about-preview::after { background: linear-gradient(180deg, rgba(4,8,12,0.10) 0%, rgba(4,8,12,0.16) 100%); }
+}
+
+/* Force consult/service images to fill their .card-media containers in the preview stylesheet too */
+.consult-img, .concierge-img, .manned-img, .mobile-img, .loss-img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: cover !important;
+	display: block !important;
+}
+.consult-img { object-position: center 36% !important; transform: none !important; }
 .values {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -563,6 +737,16 @@ footer .footer-nav a:hover, footer .footer-nav a:focus { color: var(--bg); backg
 
 /* Accessibility: visible skip link for keyboard/screen-reader users */
 .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* DEBUG: temporary helpers to identify hero layering/overflow issues.
+	Enable by adding `debug-hero` to the <body> (e.g. in DevTools: document.body.classList.add('debug-hero'))
+	Remove after debugging. */
+body.debug-hero .hero { outline: 3px solid rgba(255,0,0,0.9); }
+body.debug-hero .hero-bg { outline: 3px solid rgba(0,160,0,0.9); background-color: transparent !important; }
+body.debug-hero .hero-media { outline: 3px solid rgba(0,112,255,0.9); }
+body.debug-hero .hero-media img { outline: 3px dashed rgba(255,165,0,0.95); max-height: none !important; }
+body.debug-hero .hero-media-overlay { outline: 3px dotted rgba(128,0,128,0.95); background: rgba(255,255,255,0.02) !important; }
+
 .skip-link:focus { position: static; left: 0; top: 0; width: auto; height: auto; padding: 12px 16px; background: var(--gold); color: #071018; z-index:9999; border-radius:6px; text-decoration:none; display:inline-block; }
 
 /* Improve focus outlines for keyboard users */
@@ -700,3 +884,78 @@ body.debug-viz .site-header { outline: 2px solid rgba(255,200,80,0.22); }
 body.debug-viz .hero { outline: 2px dashed rgba(90,200,255,0.18); }
 body.debug-viz .hero-media { outline: 1px dashed rgba(255,255,255,0.06); }
 body.debug-viz .services-grid .card { outline: 1px solid rgba(200,200,200,0.06); }
+
+/* Per-card image classes: set defaults and example sizes */
+.consult-img, .concierge-img, .manned-img, .mobile-img, .loss-img {
+	width: 100%;
+	height: auto;
+	display: block;
+	/* default: cover for most images */
+	object-fit: cover;
+}
+
+/* Example per-card sizing (adjust per subject) */
+.consult-img { object-position: center 36%; width:100%; height:100%; object-fit:cover; display:block; background-color:transparent; }
+.concierge-img { object-position: center center; height: 160px; }
+.manned-img { object-position: center center; height: 160px; }
+.mobile-img { object-position: center center; height: 150px; }
+.loss-img { object-position: center center; height: 170px; }
+
+/* Mobile fallback: cap heights for narrow viewports */
+/* Ensure consult image behaves like other service images and fills the media area. */
+.consult-img {
+	object-fit: cover;
+	background-color: transparent;
+	width:100%;
+	height:100%;
+	display:block;
+}
+
+/* Ensure person headshots are aligned toward the top so heads are not cropped.
+	Use a specific, high-specificity rule under .services-page to override
+	any earlier first-of-type object-position and transform. */
+.services-page .services-grid .card .consult-img,
+.services-page .services-grid .card .manned-img,
+.services-page .services-grid .card .concierge-img {
+	/* keep consult as contain to avoid cropping; for other headshots use cover but align top */
+	/* bias further toward the top so faces stay visible when container crops */
+	object-position: 50% 6%; /* center horizontally, move visible area lower in the image */
+}
+
+/* Some rules earlier target the first card image and apply a scale transform; ensure
+	our headshot images don't get scaled/cropped unexpectedly. */
+.services-page .services-grid .card .consult-img { transform: none !important; }
+
+
+@media (max-width: 640px) {
+	/* On narrow viewports, allow the container to scale and avoid forcing an overly small height
+	   which caused the image to be visually cut/zoomed. Use a min-height and remove !important. */
+	.consult-img, .concierge-img, .manned-img, .mobile-img, .loss-img {
+		height: auto;
+		min-height: 120px;
+	}
+	/* For consult specifically, keep a comfortable min-height so the image isn't squashed */
+	.consult-img { min-height: 150px; }
+
+	/* On very narrow phones, bias headshots slightly lower to keep faces visible while
+	   maintaining a compact layout. */
+	.services-page .services-grid .card .consult-img,
+	.services-page .services-grid .card .manned-img,
+	.services-page .services-grid .card .concierge-img {
+		object-position: 50% 10%;
+	}
+
+	/* Strong mobile override: for manned guarding and consultation, force top alignment
+	   and contain so heads are never cut off on portrait phones. Increase specificity
+	   and use important to override other rules. */
+	.services-page .services-grid .card .consult-img.manned-img,
+	.services-page .services-grid .card .consult-img.consult-img,
+	.services-page .services-grid .card .manned-img,
+	.services-page .services-grid .card .consult-img {
+		/* make consult and other service images cover their containers on narrow viewports */
+		object-fit: cover !important;
+		object-position: 50% 10% !important;
+		min-height: 120px !important;
+		height: 100% !important;
+	}
+}

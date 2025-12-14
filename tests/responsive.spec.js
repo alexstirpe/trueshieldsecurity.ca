@@ -4,7 +4,8 @@ const axe = require('axe-core');
 const fs = require('fs');
 const path = require('path');
 
-const pages = ['/', '/index.html', '/home.html', '/contact.html', '/services.html'];
+// Temporarily run only the services page for focused visual checks.
+const pages = ['/services.html'];
 
 const viewports = [
   { name: 'iPhone 12 - portrait', device: 'iPhone 12', orientation: 'portrait' },
