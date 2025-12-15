@@ -34,7 +34,16 @@
 	<!-- styles moved to /assets/css/style.css -->
 </head>
 <body class="about-preview">
-	<a href="#main-content" class="skip-link">Skip to main content</a>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<!-- Inline SVG defs for page-scoped visual filters (sharpen) -->
+		<svg aria-hidden="true" width="0" height="0" style="position:absolute;opacity:0;pointer-events:none;">
+			<defs>
+				<!-- Simple 3x3 sharpen kernel; reference with filter:url(#sharpen) in CSS -->
+				<filter id="sharpen" x="-10%" y="-10%" width="120%" height="120%" filterUnits="objectBoundingBox">
+					<feConvolveMatrix order="3" kernelMatrix="0 -1 0 -1 5 -1 0 -1 0" divisor="1" edgeMode="duplicate" preserveAlpha="true" />
+				</filter>
+			</defs>
+		</svg>
 			<header class="site-header">
 				<div class="site-header-inner">
 					<div class="brand">
