@@ -420,8 +420,8 @@ body.about-preview::before {
 	background-position: center top;
 	background-size: cover;
 	/* show original PNG colors (no color-destructive filters) and reduced opacity per request */
-	/* previous: 0.51 -> apply 10% relative decrease -> 0.51 * 0.9 = 0.459 */
-	opacity: 0.46;
+	/* previous: 0.46 -> apply 15% relative decrease -> 0.46 * 0.85 = 0.391 */
+	opacity: 0.39;
 	/* apply sharpen SVG filter to make PNG lines crisper when supported */
 	-webkit-filter: none;
 	filter: url('#sharpen') saturate(1);
@@ -447,12 +447,12 @@ body.about-preview::after {
 body.about-preview > * { position: relative; z-index: 1; }
 
 @media (max-width: 1200px) {
-	body.about-preview::before { background-position: center top; background-size: 80vw; opacity: 0.18; }
+	body.about-preview::before { background-position: center top; background-size: 80vw; opacity: 0.15; }
 	body.about-preview::after { background: linear-gradient(180deg, rgba(4,8,12,0.08) 0%, rgba(4,8,12,0.12) 100%); }
 }
 
 @media (max-width: 480px) {
-	body.about-preview::before { background-position: center top; background-size: cover; opacity: 0.21; }
+	body.about-preview::before { background-position: center top; background-size: cover; opacity: 0.18; }
 	body.about-preview::after { background: linear-gradient(180deg, rgba(4,8,12,0.10) 0%, rgba(4,8,12,0.16) 100%); }
 }
 
