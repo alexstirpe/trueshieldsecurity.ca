@@ -51,7 +51,7 @@ No frameworks are currently used to preserve simplicity, portability, and long-t
 
 ---
 
-## Repository Structure (High-Level)
+## Repository Structure
 
 ```
 / (root)
