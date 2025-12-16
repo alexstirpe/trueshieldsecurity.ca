@@ -57,20 +57,20 @@
 	<main id="main-content">
 		<section class="container">
 			<h1>Contact Us</h1>
-			<p style="color:#444;">Complete the form below to request a quote or to speak with a member of our team.</p>
+			<p style="color:#444;">Complete the form below to request a quote or to speak with a member of our team. For direct assistance, <a href="tel:+16478947950">call us at 647-894-7950</a>.</p>
 
 			<div class="contact-grid" style="margin-top:18px;">
 				<div>
 					<form id="contact-form" action="https://formsubmit.co/support@trueshieldsecurity.ca" method="POST" novalidate>
-						<input type="hidden" name="_subject" value=" TSS(WEB) Consultation / Quote Request - New Form Submitted ! ">
+						<input type="hidden" name="_subject" value=" MOLEX: TSS(WEB) Consultation / Quote Request - New Form Submitted ! ">
 						<input type="hidden" name="_cc" value="mounirm00@outlook.com">
 						<input type="hidden" name="_next" value="https://trueshieldsecurity.ca/contact.html?thank-you">
-						<input type="hidden" name="_captcha" value="false">
+						<input type="hidden" name="_captcha" value="true">
 						<input type="hidden" name="submitted_at" id="submitted_at" value="">
 						<input type="text" name="_honey" id="_honey" style="display:none" tabindex="-1" autocomplete="off">
 						<div id="form-status" role="status" aria-live="polite" style="display:none;margin-bottom:10px;font-size:0.95rem;"></div>
 						<label for="name">Name</label>
-						<input id="name" name="name" type="text" placeholder="Your full name" required>
+						<input id="name" name="name" type="text" placeholder="Your full name or company" required>
 
 						<label for="email">Email</label>
 						<input id="email" name="email" type="email" placeholder="you@example.com" required>
@@ -79,7 +79,7 @@
 						<input id="phone" name="phone" type="tel" placeholder="Phone number">
 
 						<label for="message">Message</label>
-						<textarea id="message" name="message" placeholder="Tell us about your security needs" required></textarea>
+						<textarea id="message" name="message" placeholder="Tell us about your security needs... NOTE: Do not include personal information or confidential details." required></textarea>
 
 						<button type="submit" class="submit btn-primary">Request a Quote</button>
 					</form>
@@ -166,7 +166,7 @@
 			if(honeyVal && honeyVal.trim() !== ''){
 				status.style.display = 'block';
 				status.style.color = '#7a0b0b';
-				status.textContent = 'Bot detection triggered. Submission blocked.';
+				status.textContent = 'Bot detection triggered. Submission blocked. <b>(MOLEX: Honeypot Field Filled?)</b>';
 				if(btn) btn.disabled = false;
 				return;
 			}
@@ -175,7 +175,7 @@
 			if(elapsed < 3){
 				status.style.display = 'block';
 				status.style.color = '#7a0b0b';
-				status.textContent = 'Please take a moment to complete the form before submitting.';
+				status.textContent = 'Please take a moment to complete the form before submitting. <b>(MOLEX: Fields Missing?)</b>';
 				if(btn) btn.disabled = false;
 				return;
 			}
@@ -193,17 +193,17 @@
 				if(res.ok){
 					status.style.display = 'block';
 					status.style.color = '#0b6623';
-					status.textContent = 'Thanks — your message was sent. We will reply shortly.';
+					status.innerHTML = 'Thanks — we sent your request to internal operations team. We will reply within shortly via email or by telephone. <b>(MOLEX: Message Sent Successfully!)</b>';
 					form.reset();
 				} else {
 					status.style.display = 'block';
 					status.style.color = '#7a0b0b';
-					status.textContent = 'Submission failed. Please try again or email support@trueshieldsecurity.ca';
+					status.innerHTML = 'Submission failed. Please try again or email, support@trueshieldsecurity.ca - <b>(MOLEX: Server Rejected Submission?)</b>';
 				}
 			} catch(err){
 				status.style.display = 'block';
 				status.style.color = '#7a0b0b';
-				status.textContent = 'Network error. Please try again later.';
+				status.innerHTML = 'Network error. Please try again later. <b>(MOLEX: POST Submission Interruption?)</b>';
 			} finally {
 				if(btn) btn.disabled = false;
 			}
