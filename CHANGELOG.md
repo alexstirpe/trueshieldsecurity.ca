@@ -199,3 +199,44 @@ This project follows [Semantic Versioning](https://semver.org/) (`MAJOR.MINOR.PA
 **Last Updated:** December 10, 2025  
 **Maintained By:** Alexandria S. & Mohammed M.  
 **Questions or Issues?** Contact: support@trueshieldsecurity.ca
+
+---
+
+## [Unreleased] / 2025-12-15 — Post-design fixes, about page asset, LinkedIn buttons, contact form
+
+**Focus:** Finalize about page visual polish and team social links; restore production parity for header/home; enable contact form delivery and anti-spam protections; document all session changes.
+
+### Added
+- Replaced decorative background on `about.html` with `assets/pg_bg_design-elements_tss.png` and tuned visual filters so blacks appear deeper while maintaining a white page background.
+- Added LinkedIn contact controls under team avatars on `about.html` for Anwar and Harsimran (Balwinder removed per request).
+- Added `avatar-wrap` and `.social-links` markup and styles in `css/styles.css` and `assets/css/style.css` to vertically stack avatar + LinkedIn pill and center them.
+- Implemented a client-side AJAX handler for the contact form to provide inline success/error feedback and prevent duplicate submits (`contact.html`).
+- Integrated Formsubmit-based delivery for the contact form by posting to `https://formsubmit.co/support@trueshieldsecurity.ca`.
+- Added CC to `mounirm00@outlook.com` for incoming contact submissions.
+- Updated contact form `_subject` to: " TSS(WEB) Consultation / Quote Request - New Form Submitted ! ".
+- Added a `submitted_at` timestamp hidden field to the form for server-side/recording purposes.
+
+### Changed
+- Restored `home.html`, `index.html`, and canonical/preview CSS to the production copies to preserve live-site parity after header/layout experiments.
+- Tuned LinkedIn button styles (pill and icon-only variants experimented with, final reduced-size pill chosen) in both style sheets to be professional and unobtrusive.
+
+### Security & Spam Protections
+- Enabled honeypot field (`_honey`) and timing-based anti-bot logic (submissions <3s blocked) in the AJAX handler.
+- Set `_captcha=true` (Formsubmit's server-side CAPTCHA/anti-spam) per request — this uses Formsubmit's built-in checks and does not require a Google reCAPTCHA key.
+
+### Files Modified (not exhaustive)
+- `about.html` — replaced background asset; adjusted avatar markup and added LinkedIn anchors.
+- `css/styles.css` & `assets/css/style.css` — added `.avatar-wrap`, `.linkedin-btn` rules and tuned button sizes/variants; restored header rules.
+- `home.html` / `index.html` — replaced with production copies to restore parity.
+- `contact.html` — switched form to Formsubmit endpoint, added hidden fields (`_subject`, `_cc`, `_next`, `_captcha`, `submitted_at`, `_honey`), added `id="contact-form"`, inline JS AJAX submit handler, honeypot/timing checks, and status messaging UI.
+
+### Commits & Notes
+- Commit: "UI: Add LinkedIn buttons under team avatars, remove placeholder, style pill buttons (smaller, accessible)" — earlier changes staged and committed.
+- Commit: "Contact: add CC to mounirm00@outlook.com, update subject, add timestamp + timing/honeypot spam protections" — contact form changes.
+- This changelog entry documents the full session of edits we performed through 2025-12-15.
+
+### Next Actions
+- Verify contact submissions arrive to both `support@trueshieldsecurity.ca` and `mounirm00@outlook.com` (Formsubmit confirmation already completed).
+- Optionally add Google reCAPTCHA (requires site key/secret) or replace Formsubmit with a serverless SMTP flow for full control; both were discussed and left as optional improvements.
+
+**Updated:** December 15, 2025 — Alexandria S.
