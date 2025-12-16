@@ -61,7 +61,14 @@
 
 			<div class="contact-grid" style="margin-top:18px;">
 				<div>
-					<form action="#" method="post" novalidate>
+					<form id="contact-form" action="https://formsubmit.co/support@trueshieldsecurity.ca" method="POST" novalidate>
+						<input type="hidden" name="_subject" value=" TSS(WEB) Consultation / Quote Request - New Form Submitted ! ">
+						<input type="hidden" name="_cc" value="mounirm00@outlook.com">
+						<input type="hidden" name="_next" value="https://trueshieldsecurity.ca/contact.html?thank-you">
+						<input type="hidden" name="_captcha" value="false">
+						<input type="hidden" name="submitted_at" id="submitted_at" value="">
+						<input type="text" name="_honey" id="_honey" style="display:none" tabindex="-1" autocomplete="off">
+						<div id="form-status" role="status" aria-live="polite" style="display:none;margin-bottom:10px;font-size:0.95rem;"></div>
 						<label for="name">Name</label>
 						<input id="name" name="name" type="text" placeholder="Your full name" required>
 
@@ -135,8 +142,74 @@
 		</div>
 	</footer>
 
+</script>
 	<script src="/assets/js/header.js"></script>
-    
+
+	<script>
+	(function(){
+		const form = document.getElementById('contact-form');
+		const status = document.getElementById('form-status');
+		if(!form) return;
+		// start time to detect too-fast (bot) submissions
+		const start = Date.now();
+		// set initial submitted_at timestamp on load
+		document.getElementById('submitted_at').value = new Date().toISOString();
+
+		form.addEventListener('submit', async function(e){
+			e.preventDefault();
+			const btn = form.querySelector('button[type="submit"]');
+			if(btn) btn.disabled = true;
+
+			// spam checks: honeypot and minimum time
+			const honey = document.getElementById('_honey') || document.getElementById(' _honey');
+			const honeyVal = (document.getElementById('_honey') || document.getElementById('_honey')) ? document.getElementById('_honey').value : document.getElementById('_honey')?.value;
+			if(honeyVal && honeyVal.trim() !== ''){
+				status.style.display = 'block';
+				status.style.color = '#7a0b0b';
+				status.textContent = 'Bot detection triggered. Submission blocked.';
+				if(btn) btn.disabled = false;
+				return;
+			}
+
+			const elapsed = (Date.now() - start) / 1000;
+			if(elapsed < 3){
+				status.style.display = 'block';
+				status.style.color = '#7a0b0b';
+				status.textContent = 'Please take a moment to complete the form before submitting.';
+				if(btn) btn.disabled = false;
+				return;
+			}
+
+			// update submitted_at to time of submit
+			document.getElementById('submitted_at').value = new Date().toISOString();
+
+			const data = new FormData(form);
+			try{
+				const res = await fetch(form.action, {
+					method: 'POST',
+					body: data,
+					headers: { 'Accept': 'application/json' }
+				});
+				if(res.ok){
+					status.style.display = 'block';
+					status.style.color = '#0b6623';
+					status.textContent = 'Thanks — your message was sent. We will reply shortly.';
+					form.reset();
+				} else {
+					status.style.display = 'block';
+					status.style.color = '#7a0b0b';
+					status.textContent = 'Submission failed. Please try again or email support@trueshieldsecurity.ca';
+				}
+			} catch(err){
+				status.style.display = 'block';
+				status.style.color = '#7a0b0b';
+				status.textContent = 'Network error. Please try again later.';
+			} finally {
+				if(btn) btn.disabled = false;
+			}
+		});
+	})();
+	</script>
 
 </body>
 </html>
