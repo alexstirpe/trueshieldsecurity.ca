@@ -60,7 +60,11 @@
             <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1562072544-9b3f8e7a6a7b?q=80&w=1600&auto=format&fit=crop');"></div>
             <!-- Hero media: security image that spans the hero with text overlaid -->
             <div class="hero-media" aria-hidden="true">
-                <img src="/assets/security-mainpage.png" alt="Security overview" class="security-main-asset" loading="lazy">
+                <video class="security-main-asset" autoplay muted loop playsinline aria-hidden="true" poster="/assets/security-mainpage.png">
+                    <source src="/assets/%28TSS%29%20Website%20HERO%20Promotional-AIFaces.mp4" type="video/mp4">
+                    <!-- Fallback image for older browsers -->
+                    <img src="/assets/security-mainpage.png" alt="Security overview" loading="lazy">
+                </video>
                 <div class="hero-media-overlay" aria-hidden="true"></div>
             </div>
                         <div class="container" aria-label="Services overview">
@@ -164,5 +168,32 @@
 
     <script src="/assets/js/header.js"></script>
     <script src="/assets/js/main.js"></script>
+        <script>
+        (function(){
+            const video = document.querySelector('.hero-media video.security-main-asset');
+            const hero = document.querySelector('.hero');
+            if(!video || !hero) return;
+
+            function fitHero(){
+                video.style.width = '100%';
+                video.style.height = 'auto';
+                video.style.objectFit = 'contain';
+                // calculate displayed height when video fills full width
+                const vw = window.innerWidth || document.documentElement.clientWidth;
+                const vidW = video.videoWidth || video.clientWidth || vw;
+                const vidH = video.videoHeight || video.clientHeight || (vidW * 9/16);
+                const displayedHeight = Math.round(vw * (vidH / vidW));
+                // apply as min-height to avoid layout jumps if smaller
+                hero.style.minHeight = displayedHeight + 'px';
+            }
+
+            video.addEventListener('loadedmetadata', fitHero);
+            // in some browsers metadata already available
+            if(video.readyState >= 1) fitHero();
+            // adjust on resize
+            let rTimer;
+            window.addEventListener('resize', function(){ clearTimeout(rTimer); rTimer = setTimeout(fitHero, 80); });
+        })();
+        </script>
 </body>
 </html>
