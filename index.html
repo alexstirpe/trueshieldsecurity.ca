@@ -26,6 +26,88 @@
 <!doctype html>
 <html lang="en">
 <head>
+        <style>
+                    @media (min-width: 641px) {
+                        .hero-heading-contrast {
+                            background: transparent !important;
+                            border-radius: 0 !important;
+                            box-shadow: none !important;
+                            backdrop-filter: none !important;
+                            -webkit-backdrop-filter: none !important;
+                        }
+                    }
+            .hero-heading-contrast {
+                background: transparent;
+                border-radius: 0;
+                padding: 1.2rem 1.2rem 1.1rem 1.2rem;
+                margin: 0 auto 1.1rem auto;
+                max-width: 98vw;
+                box-shadow: none;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                z-index: 10;
+            }
+            .hero-heading-contrast h1.hero-slogan {
+                font-size: clamp(1.3rem, 5vw, 2.2rem);
+                font-weight: 900;
+                color: #fff;
+                margin: 0 0 0.5em 0;
+                letter-spacing: 0.01em;
+                line-height: 1.15;
+                text-align: center;
+                background: none;
+                text-shadow: none;
+            }
+            .hero-heading-contrast h2.hero-title {
+                font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+                font-weight: 700;
+                color: #fff;
+                margin: 0 0 0.4em 0;
+                letter-spacing: 0.01em;
+                line-height: 1.18;
+                text-align: center;
+                background: none;
+                text-shadow: none;
+            }
+            .hero-heading-contrast p.hero-sub {
+                font-size: clamp(0.98rem, 2.2vw, 1.08rem);
+                font-weight: 500;
+                color: #f5f5f5;
+                margin: 0 0 0.2em 0;
+                letter-spacing: 0.01em;
+                line-height: 1.32;
+                text-align: center;
+                background: none;
+                text-shadow: none;
+            }
+            @media (max-width: 640px) {
+                .hero-heading-contrast {
+                    background: rgba(0,0,0,0.78);
+                    border-radius: 18px;
+                    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+                    backdrop-filter: blur(6px);
+                    -webkit-backdrop-filter: blur(6px);
+                    padding: 0.9rem 0.5rem 0.8rem 0.5rem;
+                    max-width: 99vw;
+                }
+                .hero-heading-contrast h1.hero-slogan {
+                    font-size: clamp(1.1rem, 7vw, 1.5rem);
+                    margin-bottom: 0.4em;
+                }
+                .hero-heading-contrast h2.hero-title {
+                    font-size: clamp(0.98rem, 4vw, 1.12rem);
+                    margin-bottom: 0.3em;
+                }
+                .hero-heading-contrast p.hero-sub {
+                    font-size: clamp(0.92rem, 3vw, 1.01rem);
+                    margin-bottom: 0.2em;
+                }
+            }
+        </style>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>True Shield Security — Professional Security Services</title>
@@ -57,7 +139,7 @@
 
     <main id="main-content">
         <section class="hero" aria-label="Hero">
-            <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1562072544-9b3f8e7a6a7b?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-bg" style="background-image:url('assets/security-mainpage.png'); background-color:#222; background-size:cover; background-position:center;"></div>
             <!-- Hero media: security image that spans the hero with text overlaid -->
             <div class="hero-media" aria-hidden="true">
                 <video class="security-main-asset" autoplay muted loop playsinline aria-hidden="true" poster="/assets/security-mainpage.png">
@@ -67,14 +149,12 @@
                 </video>
                 <div class="hero-media-overlay" aria-hidden="true"></div>
             </div>
-                        <div class="container" aria-label="Services overview">
-            <div class="hero-inner">
+            <div class="hero-heading-contrast">
                 <!-- Prominent brand slogan (primary headline) -->
-                <h1 class="hero-slogan">Strong Enough to Protect... </br> 
-                    Proud Enough to Serve</h1>
+                <h1 class="hero-slogan">Strong Enough to Protect... <br> Proud Enough to Serve</h1>
                 <!-- Demoted hero title for supporting copy -->
-                <h2 class="hero-title" style="margin:0 0 12px 0; font-size:clamp(18px,3.2vw,28px); line-height:1.1;">Professional Security Services You Can Trust</h2>
-                <p class="hero-sub" style="margin:0 0 18px 0; max-width:720px; color:rgba(255,255,255,0.95);">Highly trained teams. Tailored security. Predictable outcomes.</p>
+                <h2 class="hero-title">Professional Security Services You Can Trust</h2>
+                <p class="hero-sub">Highly trained teams. Tailored security. Predictable outcomes.</p>
             </div>
         </section>
 
