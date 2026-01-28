@@ -37,7 +37,6 @@
                         }
                     }
             .hero-heading-contrast {
-                background: transparent;
                 border-radius: 0;
                 padding: 1.2rem 1.2rem 1.1rem 1.2rem;
                 margin: 0 auto 1.1rem auto;
@@ -47,8 +46,6 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
                 z-index: 10;
             }
             .hero-heading-contrast h1.hero-slogan {
@@ -85,14 +82,39 @@
                 text-shadow: none;
             }
             @media (max-width: 640px) {
+                .hero {
+                    position: relative !important;
+                    overflow: hidden !important;
+                }
+                .hero-media {
+                    position: relative !important;
+                    width: 100% !important;
+                    height: 56.25vw !important; /* 16:9 ratio */
+                    min-height: 220px !important;
+                    max-height: 70vh !important;
+                    z-index: 1 !important;
+                }
+                .hero-media video.security-main-asset {
+                    position: absolute !important;
+                    inset: 0 !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                    object-fit: cover !important;
+                }
                 .hero-heading-contrast {
-                    background: rgba(0,0,0,0.78);
-                    border-radius: 18px;
-                    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-                    backdrop-filter: blur(6px);
-                    -webkit-backdrop-filter: blur(6px);
-                    padding: 0.9rem 0.5rem 0.8rem 0.5rem;
-                    max-width: 99vw;
+                    position: static !important;
+                    background: rgba(24,24,24,0.28) !important;
+                    border-radius: 18px !important;
+                    box-shadow: none !important;
+                    backdrop-filter: blur(10px) !important;
+                    -webkit-backdrop-filter: blur(10px) !important;
+                    padding: 0.9rem 0.5rem 0.8rem 0.5rem !important;
+                    max-width: 99vw !important;
+                    margin-top: 0.7rem !important;
+                    display: flex !important;
+                    flex-direction: column !important;
+                    align-items: center !important;
+                    justify-content: center !important;
                 }
                 .hero-heading-contrast h1.hero-slogan {
                     font-size: clamp(1.1rem, 7vw, 1.5rem);
