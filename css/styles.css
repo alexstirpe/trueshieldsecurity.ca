@@ -658,41 +658,61 @@ body.services-page .site-header {
 .services-page .services-grid {
 	display: flex;
 	flex-direction: column;
-	gap: 18px;
+	gap: 20px;
 }
 
 .services-page .card {
-	display: grid;
-	grid-template-columns: 380px minmax(0, 1fr);
+	display: flex;
 	align-items: stretch;
+	min-width: 0;
 	overflow: hidden;
 }
 
 .services-page .card-media {
-	height: 100%;
-	min-height: 320px;
-	aspect-ratio: auto;
+	flex: 0 0 380px;
+	width: 380px;
+	min-width: 380px;
+	max-width: 380px;
+	align-self: stretch;
+	background: #eceff3;
+	overflow: hidden;
 }
 
 .services-page .card-media img {
+	display: block;
 	width: 100%;
 	height: 100%;
-	display: block;
+	min-height: 100%;
 	object-fit: cover;
 	object-position: center;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 
 .services-page .card-body {
-	padding: 26px 26px 26px 22px;
+	flex: 1 1 auto;
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
+	padding: 26px 26px 26px 24px;
 	gap: 10px;
 }
 
+.services-page .card-body h2 {
+	margin: 0 0 4px;
+	font-size: clamp(1.45rem, 2vw, 2rem);
+	line-height: 1.12;
+}
+
+.services-page .card-body p {
+	margin: 0 0 6px;
+	max-width: 72ch;
+}
+
 .service-features {
-	margin-top: 4px;
+	margin-top: 2px;
 	padding-left: 0;
 	list-style: none;
 	display: grid;
@@ -715,13 +735,26 @@ body.services-page .site-header {
 	font-weight: 800;
 }
 
+.services-page .card-body .btn,
+.services-page .card-body .btn-primary {
+	margin-top: 6px;
+}
+
 @media (max-width: 900px) {
 	.services-page .card {
-		grid-template-columns: 1fr;
+		display: block;
 	}
 
 	.services-page .card-media {
-		min-height: 240px;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		height: 240px;
+	}
+
+	.services-page .card-media img {
+		height: 100%;
+		min-height: 0;
 	}
 
 	.services-page .card-body {
@@ -1112,13 +1145,6 @@ footer {
 		grid-template-columns: 1fr;
 	}
 
-	.services-page .card {
-		grid-template-columns: 1fr;
-	}
-
-	.services-page .card-media {
-		min-height: 240px;
-	}
 
 	.values,
 	.values-centered {
