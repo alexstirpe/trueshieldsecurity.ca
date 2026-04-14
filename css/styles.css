@@ -643,10 +643,6 @@ body.services-page .site-header {
 	box-shadow: var(--shadow-sm);
 }
 
-/* =========================
-   Services page
-   ========================= */
-
 .page-hero-lite {
 	padding: 46px 0 18px;
 }
@@ -654,17 +650,19 @@ body.services-page .site-header {
 .page-hero-lite p {
 	max-width: 760px;
 }
+/* =========================
+   Services page (FINAL FIX - Safari safe)
+   ========================= */
 
 .services-page .services-grid {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 18px;
 }
 
 .services-page .card {
 	display: flex;
 	align-items: stretch;
-	min-width: 0;
 	overflow: hidden;
 }
 
@@ -673,71 +671,25 @@ body.services-page .site-header {
 	width: 380px;
 	min-width: 380px;
 	max-width: 380px;
-	align-self: stretch;
 	background: #eceff3;
-	overflow: hidden;
 }
 
 .services-page .card-media img {
-	display: block;
 	width: 100%;
 	height: 100%;
-	min-height: 100%;
 	object-fit: cover;
 	object-position: center;
-	-webkit-transform: translateZ(0);
-	transform: translateZ(0);
+	display: block;
 }
 
 .services-page .card-body {
-	flex: 1 1 auto;
-	min-width: 0;
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
-	padding: 26px 26px 26px 24px;
+	padding: 24px 24px 24px 22px;
 	gap: 10px;
-}
-
-.services-page .card-body h2 {
-	margin: 0 0 4px;
-	font-size: clamp(1.45rem, 2vw, 2rem);
-	line-height: 1.12;
-}
-
-.services-page .card-body p {
-	margin: 0 0 6px;
-	max-width: 72ch;
-}
-
-.service-features {
-	margin-top: 2px;
-	padding-left: 0;
-	list-style: none;
-	display: grid;
-	gap: 10px;
-}
-
-.service-features li {
-	position: relative;
-	padding-left: 26px;
-	color: #374151;
-	line-height: 1.5;
-}
-
-.service-features li::before {
-	content: "✓";
-	position: absolute;
-	left: 0;
-	top: 0;
-	color: var(--gold-dark);
-	font-weight: 800;
-}
-
-.services-page .card-body .btn,
-.services-page .card-body .btn-primary {
-	margin-top: 6px;
+	min-width: 0;
 }
 
 @media (max-width: 900px) {
@@ -754,7 +706,6 @@ body.services-page .site-header {
 
 	.services-page .card-media img {
 		height: 100%;
-		min-height: 0;
 	}
 
 	.services-page .card-body {
