@@ -2,9 +2,9 @@
     ============================================================
     Project Name: "The Awarded Contract" — True Shield Security Services Website Project
     Description: A fully original website created using basic HTML, CSS,
-                             and JavaScript elements for a locally owned and operated 
-                             manned security services — True Shield Security. Designed and built as a
-                             collaborative portfolio project.
+                 and JavaScript elements for a locally owned and operated
+                 manned security services — True Shield Security. Designed
+                 and built as a collaborative portfolio project.
 
     Created By:
         • Alexandria S.
@@ -13,10 +13,10 @@
     Date: December 9, 2025
     Location: Ontario, Canada
 
-    Ownership: This site was developed in partnership with True Shield Security Services,
-                         with full approval and contribution from the business.
-                         All content and design elements are original and tailored
-                         to represent the brand's local presence and mission.
+    Ownership: This site was developed in partnership with True Shield
+               Security Services, with full approval and contribution from
+               the business. All content and design elements are original
+               and tailored to represent the brand's local presence and mission.
 
     Copyright © 2025 True Shield Security Services & Molex | All Rights Reserved.
 
@@ -26,289 +26,338 @@
 <!doctype html>
 <html lang="en">
 <head>
-        <style>
-                    @media (min-width: 641px) {
-                        .hero-heading-contrast {
-                            background: transparent !important;
-                            border-radius: 0 !important;
-                            box-shadow: none !important;
-                            backdrop-filter: none !important;
-                            -webkit-backdrop-filter: none !important;
-                        }
-                    }
+    <style>
+        @media (min-width: 641px) {
             .hero-heading-contrast {
-                border-radius: 0;
-                padding: 1.2rem 1.2rem 1.1rem 1.2rem;
-                margin: 0 auto 1.1rem auto;
-                max-width: 98vw;
-                box-shadow: none;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                z-index: 10;
+                background: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
             }
+        }
+
+        .hero-heading-contrast {
+            border-radius: 0;
+            padding: 1.2rem 1.2rem 1.1rem 1.2rem;
+            margin: 0 auto 1.1rem auto;
+            max-width: 98vw;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .hero-heading-contrast h1.hero-slogan {
+            font-size: clamp(1.3rem, 5vw, 2.2rem);
+            font-weight: 900;
+            color: #fff;
+            margin: 0 0 0.5em 0;
+            letter-spacing: 0.01em;
+            line-height: 1.15;
+            text-align: center;
+            background: none;
+            text-shadow: none;
+        }
+
+        .hero-heading-contrast h2.hero-title {
+            font-size: clamp(1.05rem, 3.2vw, 1.35rem);
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 0.4em 0;
+            letter-spacing: 0.01em;
+            line-height: 1.18;
+            text-align: center;
+            background: none;
+            text-shadow: none;
+        }
+
+        .hero-heading-contrast p.hero-sub {
+            font-size: clamp(0.98rem, 2.2vw, 1.08rem);
+            font-weight: 500;
+            color: #f5f5f5;
+            margin: 0 0 0.2em 0;
+            letter-spacing: 0.01em;
+            line-height: 1.32;
+            text-align: center;
+            background: none;
+            text-shadow: none;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                position: relative !important;
+                overflow: visible !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+
+            .hero-media {
+                position: relative !important;
+                width: 100vw !important;
+                min-width: 0 !important;
+                max-width: 100vw !important;
+                height: auto !important;
+                min-height: 180px !important;
+                max-height: none !important;
+                margin: 0 auto !important;
+                display: block !important;
+                z-index: 1 !important;
+            }
+
+            .hero-media video.security-main-asset {
+                position: relative !important;
+                width: 100vw !important;
+                min-width: 0 !important;
+                max-width: 100vw !important;
+                height: auto !important;
+                max-height: 220px !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+
+            .hero-heading-contrast {
+                position: static !important;
+                width: 90vw !important;
+                min-width: 0 !important;
+                max-width: 360px !important;
+                margin: 0.7rem auto 0 auto !important;
+                background: rgba(24, 24, 24, 0.7) !important;
+                border-radius: 12px !important;
+                box-shadow: none !important;
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+                padding: 0.9rem 0.5rem 0.8rem 0.5rem !important;
+                display: block !important;
+                text-align: center !important;
+            }
+
             .hero-heading-contrast h1.hero-slogan {
-                font-size: clamp(1.3rem, 5vw, 2.2rem);
-                font-weight: 900;
-                color: #fff;
-                margin: 0 0 0.5em 0;
-                letter-spacing: 0.01em;
-                line-height: 1.15;
-                text-align: center;
-                background: none;
-                text-shadow: none;
+                font-size: clamp(1.1rem, 7vw, 1.5rem);
+                margin-bottom: 0.4em;
             }
+
             .hero-heading-contrast h2.hero-title {
-                font-size: clamp(1.05rem, 3.2vw, 1.35rem);
-                font-weight: 700;
-                color: #fff;
-                margin: 0 0 0.4em 0;
-                letter-spacing: 0.01em;
-                line-height: 1.18;
-                text-align: center;
-                background: none;
-                text-shadow: none;
+                font-size: clamp(0.98rem, 4vw, 1.12rem);
+                margin-bottom: 0.3em;
             }
+
             .hero-heading-contrast p.hero-sub {
-                font-size: clamp(0.98rem, 2.2vw, 1.08rem);
-                font-weight: 500;
-                color: #f5f5f5;
-                margin: 0 0 0.2em 0;
-                letter-spacing: 0.01em;
-                line-height: 1.32;
-                text-align: center;
-                background: none;
-                text-shadow: none;
+                font-size: clamp(0.92rem, 3vw, 1.01rem);
+                margin-bottom: 0.2em;
             }
-            @media (max-width: 640px) {
-                .hero {
-                    position: relative !important;
-                    overflow: visible !important;
-                    display: flex !important;
-                    flex-direction: column !important;
-                    align-items: center !important;
-                    width: 100vw !important;
-                    max-width: 100vw !important;
-                }
-                .hero-media {
-                    position: relative !important;
-                    width: 100vw !important;
-                    min-width: 0 !important;
-                    max-width: 100vw !important;
-                    height: auto !important;
-                    min-height: 180px !important;
-                    max-height: none !important;
-                    margin: 0 auto !important;
-                    display: block !important;
-                    z-index: 1 !important;
-                }
-                .hero-media video.security-main-asset {
-                    position: relative !important;
-                    width: 100vw !important;
-                    min-width: 0 !important;
-                    max-width: 100vw !important;
-                    height: auto !important;
-                    max-height: 220px !important;
-                    object-fit: contain !important;
-                    display: block !important;
-                    margin: 0 auto !important;
-                }
-                .hero-heading-contrast {
-                    position: static !important;
-                    width: 90vw !important;
-                    min-width: 0 !important;
-                    max-width: 360px !important;
-                    margin: 0.7rem auto 0 auto !important;
-                    background: rgba(24,24,24,0.7) !important;
-                    border-radius: 12px !important;
-                    box-shadow: none !important;
-                    backdrop-filter: blur(10px) !important;
-                    -webkit-backdrop-filter: blur(10px) !important;
-                    padding: 0.9rem 0.5rem 0.8rem 0.5rem !important;
-                    display: block !important;
-                    text-align: center !important;
-                }
-                .hero-heading-contrast h1.hero-slogan {
-                    font-size: clamp(1.1rem, 7vw, 1.5rem);
-                    margin-bottom: 0.4em;
-                }
-                .hero-heading-contrast h2.hero-title {
-                    font-size: clamp(0.98rem, 4vw, 1.12rem);
-                    margin-bottom: 0.3em;
-                }
-                .hero-heading-contrast p.hero-sub {
-                    font-size: clamp(0.92rem, 3vw, 1.01rem);
-                    margin-bottom: 0.2em;
-                }
-            }
-        </style>
+        }
+    </style>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>True Shield Security — Professional Security Services</title>
-    <link rel="stylesheet" href="/css/styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- styles moved to /assets/css/style.css -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 </head>
+
 <body class="home">
     <a href="#main-content" class="skip-link">Skip to main content</a>
-        <header class="site-header">
-            <div class="site-header-inner">
-                <div class="brand">
-                    <a href="/index.html" aria-label="True Shield Security home">
-                        <img src="/assets/logo.png" alt="True Shield Security logo">
-                    </a>
-                </div>
-                <nav aria-label="Main navigation">
-                    <a href="/index.html" aria-current="page">Home</a>
-                    <a href="/about.html">About</a>
-                    <a href="/services.html">Services</a>
-                    <a href="/contact.html">Contact</a>
-                </nav>
-                
-                <div class="header-cta">
-                    <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
-                </div>
+
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="brand">
+                <a href="/index.html" aria-label="True Shield Security home">
+                    <img src="/assets/logo.png" alt="True Shield Security logo" />
+                </a>
             </div>
-        </header>
+
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="/index.html" aria-current="page">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/contact.html">Contact</a>
+            </nav>
+
+            <div class="header-cta">
+                <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+            </div>
+
+            <button
+                class="hamburger"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="mobile-navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
+            <div class="mobile-nav-inner">
+                <a href="/index.html" aria-current="page">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/contact.html">Contact</a>
+                <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+            </div>
+        </nav>
+    </header>
 
     <main id="main-content">
-        <section class="hero" aria-label="Hero">
-            <div class="hero-bg" style="background-image:url('assets/security-mainpage.png'); background-color:#222; background-size:cover; background-position:center;"></div>
-            <!-- Hero media: security image that spans the hero with text overlaid -->
-            <div class="hero-media" aria-hidden="true">
-                <video class="security-main-asset" autoplay muted loop playsinline aria-hidden="true" poster="/assets/security-mainpage.png">
-                    <source src="/assets/%28TSS%29%20Website%20HERO%20Promotional-AIFaces.mp4" type="video/mp4">
-                    <!-- Fallback image for older browsers -->
-                    <img src="/assets/security-mainpage.png" alt="Security overview" loading="lazy">
-                </video>
-                <div class="hero-media-overlay" aria-hidden="true"></div>
-            </div>
-            <div class="hero-heading-contrast">
-                <!-- Prominent brand slogan (primary headline) -->
-                <h1 class="hero-slogan">Strong Enough to Protect... <br> Proud Enough to Serve</h1>
-                <!-- Demoted hero title for supporting copy -->
-                <h2 class="hero-title">Professional Security Services You Can Trust</h2>
-                <p class="hero-sub">Highly trained teams. Tailored security. Predictable outcomes.</p>
-            </div>
-        </section>
+   <section class="hero" aria-label="Hero">
 
-        <section class="container" aria-label="Services overview">
-            <h2 style="margin:0 0 12px 0;">Our Key Services</h2>
-            <p style="margin:0 0 16px 0; color:#444;">Comprehensive, reliable security solutions delivered by vetted professionals.</p>
+    <!-- Desktop video -->
+    <video 
+        class="hero-video-desktop"
+        autoplay muted loop playsinline preload="metadata"
+        poster="/assets/hero-poster-desktop.jpg"
+    >
+        <source src="/assets/(TSS) Website HERO Promotional-AIFaces.mp4" type="video/mp4" />
+    </video>
 
-            <div class="services-grid">
-        <article class="card card-style-dark">
-                    <div class="card-media"><img src="assets/consult2.jpeg" alt="Consult" loading="lazy"></div>
-                    <div class="card-body">
-            <h2>Security Consulting & Risk Assessment</h2>
-                        <a class="learn-more" href="/services.html#manned">Learn More →</a>
-                    </div>
-                </article>
+    <!-- Mobile video -->
+    <video 
+        class="hero-video-mobile"
+        autoplay muted loop playsinline preload="metadata"
+        poster="/assets/hero-poster-mobile.jpg"
+    >
+        <source src="/assets/hero-mobile2.mp4" type="video/mp4" />
+    </video>
 
-        <article class="card card-style-dark">
-                    <div class="card-media"><img src="assets/front-desk-tss.jpg" alt="Front Desk" loading="lazy"></div>
-                    <div class="card-body">
-            <h2>Concierge & Front Desk</h2>
-                        <a class="learn-more" href="/services.html#mobile">Learn More →</a>
-                    </div>
-                </article>
+    <!-- Overlay -->
+    <div class="hero-media-overlay"></div>
 
-        <article class="card card-style-dark">
-                    <div class="card-media"><img src="assets/manned-guarding-tss.jpg" alt="Manned Guarding" loading="lazy"></div>
-                    <div class="card-body">
-            <h2>Manned Guarding</h2>
-                        <a class="learn-more" href="/services.html#concierge">Learn More →</a>
-                    </div>
-                </article>
+    <!-- Text -->
+    <div class="hero-heading-contrast">
+        <h1 class="hero-slogan">
+            Strong Enough to Protect... <br> Proud Enough to Serve
+        </h1>
+        <h2 class="hero-title">Professional Security Services You Can Trust</h2>
+        <p class="hero-sub">
+            Highly trained teams. Tailored security. Predictable outcomes.
+        </p>
+    </div>
 
-        <article class="card card-style-dark">
-                    <div class="card-media"><img src="assets/mobile-patrol-tss.jpg" alt="Mobile Patrols" loading="lazy"></div>
-                    <div class="card-body">
-            <h2>Mobile Patrols</h2>
-                        <a class="learn-more" href="/services.html#alarm">Learn More →</a>
-                    </div>
-                </article>
+</section>
 
-        <article class="card card-style-dark">
-                    <div class="card-media"><img src="assets/Loss-Prevention-tss.jpg" alt="Loss Prevention" loading="lazy"></div>
-                    <div class="card-body">
-            <h2>Loss Prevention</h2>
-                        <a class="learn-more" href="/services.html#consulting">Learn More →</a>
-                    </div>
-                </article>
-        
-        <article class="card card-style-dark">
-                    <div class="card-media"><img src="assets/event-security.png" alt="Corporate Security Agents" loading="lazy"></div>
-                    <div class="card-body">
-            <h2>Corporate Security Agents</h2>
-                        <a class="learn-more" href="/services.html#corporate">Learn More →</a>
-                    </div>
-                </article>
-            </div>
-
-            </div> <!-- end services-grid -->
-
-            <section style="margin-top:12px; margin-bottom:6px;" class="about-teaser">
-                <div class="container">
-                    <h2 style="margin-top:0;">About True Shield Security</h2>
-                    <p style="color:#444;">Founded to provide industry-leading protection, True Shield Security combines experience, training, and a client-first approach. We deliver discreet, dependable security services tailored for businesses and communities.</p>
-                    <a class="btn btn-primary" href="/about.html">Learn About Us</a>
+        <section class="section">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>Our Key Services</h2>
+                    <p class="section-kicker">
+                        Comprehensive, reliable security solutions delivered by vetted professionals.
+                    </p>
                 </div>
-            </section>
 
+                <div class="services-grid">
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="/assets/consult2.jpeg" alt="Security consulting and risk assessment" loading="lazy" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Security Consulting &amp; Risk Assessment</h3>
+                            <a class="learn-more" href="/services.html#manned">Learn More →</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="/assets/front-desk-tss.jpg" alt="Concierge and front desk security" loading="lazy" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Concierge &amp; Front Desk</h3>
+                            <a class="learn-more" href="/services.html#mobile">Learn More →</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="/assets/manned-guarding-tss.jpg" alt="Manned guarding security service" loading="lazy" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Manned Guarding</h3>
+                            <a class="learn-more" href="/services.html#concierge">Learn More →</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="/assets/mobile-patrol-tss.jpg" alt="Mobile patrol security service" loading="lazy" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Mobile Patrols</h3>
+                            <a class="learn-more" href="/services.html#alarm">Learn More →</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="/assets/Loss-Prevention-tss.jpg" alt="Loss prevention service" loading="lazy" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Loss Prevention</h3>
+                            <a class="learn-more" href="/services.html#consulting">Learn More →</a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-media">
+                            <img src="/assets/event-security.png" alt="Corporate security agents" loading="lazy" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Corporate Security Agents</h3>
+                            <a class="learn-more" href="/services.html#corporate">Learn More →</a>
+                        </div>
+                    </article>
+                </div>
+
+                <section class="about-teaser">
+                    <h2>About True Shield Security</h2>
+                    <p>
+                        Founded to provide industry-leading protection, True Shield Security combines experience,
+                        training, and a client-first approach. We deliver discreet, dependable security services
+                        tailored for businesses and communities.
+                    </p>
+                    <a class="btn btn-primary" href="/about.html">Learn About Us</a>
+                </section>
+            </div>
         </section>
-
-    <!-- CTA banner moved to footer to keep it visually attached to site footer -->
     </main>
 
     <footer>
-        <section class="cta-banner" aria-label="Call to action" style="margin-bottom:12px;">
-            <h3 class="fix-contrast-dark-strong" style="margin:0 0 8px 0;">Ready to improve your security posture?</h3>
-            <p style="margin:0 0 12px 0; color:rgba(255,255,255,0.92);">Request a complimentary consultation and quote from our experienced team.</p>
-            <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
-        </section>
-        <nav class="footer-nav" aria-label="Footer directory">
-            <a href="/home.html">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/services.html">Services</a>
-            <a href="/contact.html">Contact</a>
-            <a href="/privacy.html">Privacy</a>
-        </nav>
-        <div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
-            <div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
-            <div style="font-size:13px;color:#bfbfbf;">© <span id="year">2025</span> True Shield Security. All rights reserved.</div>
+        <div class="footer-inner">
+            <section class="cta-banner" aria-label="Call to action">
+                <h3 class="fix-contrast-dark-strong">Ready to improve your security posture?</h3>
+                <p>Request a complimentary consultation and quote from our experienced team.</p>
+                <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+            </section>
+
+            <nav class="footer-nav" aria-label="Footer directory">
+                <a href="/index.html">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/contact.html">Contact</a>
+                <a href="/privacy.html">Privacy</a>
+            </nav>
+
+            <div class="footer-meta">
+                <div>
+                    Email:
+                    <a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a>
+                    &nbsp; | &nbsp; Phone:
+                    <a href="tel:+16478947950">647-894-7950</a>
+                </div>
+                <div>© <span id="year">2025</span> True Shield Security. All rights reserved.</div>
+            </div>
         </div>
     </footer>
 
     <script src="/assets/js/header.js"></script>
     <script src="/assets/js/main.js"></script>
-        <script>
-        (function(){
-            const video = document.querySelector('.hero-media video.security-main-asset');
-            const hero = document.querySelector('.hero');
-            if(!video || !hero) return;
-
-            function fitHero(){
-                video.style.width = '100%';
-                video.style.height = 'auto';
-                video.style.objectFit = 'contain';
-                // calculate displayed height when video fills full width
-                const vw = window.innerWidth || document.documentElement.clientWidth;
-                const vidW = video.videoWidth || video.clientWidth || vw;
-                const vidH = video.videoHeight || video.clientHeight || (vidW * 9/16);
-                const displayedHeight = Math.round(vw * (vidH / vidW));
-                // apply as min-height to avoid layout jumps if smaller
-                hero.style.minHeight = displayedHeight + 'px';
-            }
-
-            video.addEventListener('loadedmetadata', fitHero);
-            // in some browsers metadata already available
-            if(video.readyState >= 1) fitHero();
-            // adjust on resize
-            let rTimer;
-            window.addEventListener('resize', function(){ clearTimeout(rTimer); rTimer = setTimeout(fitHero, 80); });
-        })();
-        </script>
 </body>
 </html>
