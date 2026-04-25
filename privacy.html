@@ -8,23 +8,49 @@
 </head>
 <body class="legal-page">
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header class="site-header">
+  <header class="site-header is-solid">
     <div class="site-header-inner">
-  <div class="brand">
-  	<a href="/index.html" aria-label="True Shield Security home"><img src="/assets/logo.png" alt="True Shield Security logo"></a>
-  </div>
-
-      <nav aria-label="Main navigation">
-  <a href="/index.html">Home</a>
+      <div class="brand">
+        <a href="/index.html" aria-label="True Shield Security home">
+          <img src="/assets/logo.png" alt="True Shield Security logo">
+        </a>
+      </div>
+  
+      <nav class="desktop-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
         <a href="/about.html">About</a>
         <a href="/services.html">Services</a>
+        <a href="/vaars.html">VAARS</a>
         <a href="/contact.html">Contact</a>
       </nav>
-
+  
       <div class="header-cta">
         <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
       </div>
+  
+      <button
+        class="hamburger"
+        type="button"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+  
+    <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
+      <div class="mobile-nav-inner">
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/services.html">Services</a>
+        <a href="/vaars.html">VAARS</a>
+        <a href="/contact.html">Contact</a>
+        <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+      </div>
+    </nav>
   </header>
 
   <main id="main-content" class="container">
@@ -139,19 +165,36 @@
   </main>
 
   <footer>
-    <nav class="footer-nav" aria-label="Footer directory">
-  <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/services.html">Services</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/privacy.html" aria-current="page">Privacy</a>
-    </nav>
-    <div style="max-width:1100px;margin:0 auto;padding:6px 20px;">
-      <div style="margin-bottom:6px;">Email: <a href="mailto:support@trueshieldsecurity.ca" style="color:inherit;text-decoration:underline;">support@trueshieldsecurity.ca</a> &nbsp; | &nbsp; Phone: <a href="tel:+16478947950" style="color:inherit;text-decoration:underline;">647-894-7950</a></div>
-      <div style="font-size:13px;color:#bfbfbf;">© 2025 True Shield Security. All rights reserved.</div>
+    <div class="footer-inner">
+      <section class="cta-banner" aria-label="Call to action">
+        <h3 class="fix-contrast-dark-strong">Ready to improve your security posture?</h3>
+        <p>Request a complimentary consultation and quote from our experienced team.</p>
+        <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+      </section>
+  
+      <nav class="footer-nav" aria-label="Footer directory">
+        <a href="/index.html">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/services.html">Services</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/vaars.html">VAARS</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+  
+      <div class="footer-meta">
+        <div>
+          Email:
+          <a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a>
+          &nbsp; | &nbsp; Phone:
+          <a href="tel:+16478947950">647-894-7950</a>
+        </div>
+        <div>© 2025 True Shield Security. All rights reserved.</div>
+      </div>
     </div>
   </footer>
 
   <script src="/assets/js/header.js"></script>
 </body>
 </html>
+
+

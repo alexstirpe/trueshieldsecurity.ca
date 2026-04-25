@@ -226,6 +226,7 @@ body.services-page .site-header {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 	backdrop-filter: none;
 	background-image: none;
+	overflow: visible;
 }
 .site-header-inner {
 	width: min(1480px, calc(100% - 44px));
@@ -388,39 +389,37 @@ body.services-page .site-header {
 	}
 
 	.mobile-nav {
-		position: fixed;
-		top: var(--header-height);
-		left: 0;
-		right: 0;
-		z-index: 4099;
-		display: block;
-		max-height: 0;
-		overflow: hidden;
-		opacity: 0;
-		pointer-events: none;
-		background: rgba(0, 0, 0, 0.98);
-		backdrop-filter: blur(10px);
-		border-top: 1px solid rgba(255, 255, 255, 0.06);
-		box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
-		transition: max-height 220ms ease, opacity 220ms ease;
-	}
+	display: grid;
+	grid-template-rows: 0fr;
+	opacity: 0;
+	pointer-events: none;
+	background: #000;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	border-bottom-left-radius: 14px;
+	border-bottom-right-radius: 14px;
+	box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32);
+	overflow: hidden;
+	transition:
+		grid-template-rows 220ms cubic-bezier(.4,0,.2,1),
+		opacity 180ms ease;
+}
 
-	.mobile-nav.active {
-		max-height: calc(100vh - var(--header-height));
-		opacity: 1;
-		overflow-y: auto;
-		pointer-events: auto;
-	}
+.mobile-nav.active {
+	grid-template-rows: 1fr;
+	opacity: 1;
+	pointer-events: auto;
+}
 
-	.mobile-nav .mobile-nav-inner {
-		width: calc(100% - 20px);
-		margin: 0 auto;
-		padding: 12px 0 18px;
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-	}
-
+.mobile-nav .mobile-nav-inner {
+	min-height: 0;
+	overflow: hidden;
+	width: calc(100% - 20px);
+	margin: 0 auto;
+	padding: 16px 0 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
 	.mobile-nav a {
 		display: block;
 		padding: 13px 12px;
@@ -437,11 +436,13 @@ body.services-page .site-header {
 	}
 
 	.mobile-nav .btn,
-	.mobile-nav .btn-primary {
-		width: 100%;
-		margin-top: 10px;
-		padding: 14px 16px;
-	}
+.mobile-nav .btn-primary {
+	width: auto;
+	align-self: flex-start;   /* keeps it left aligned */
+	min-width: 120px;
+	margin-top: 10px;
+	padding: 12px 18px;
+}
 }
 /* =========================
    Hero
@@ -494,20 +495,24 @@ body.services-page .site-header {
 .hero-inner {
 	position: relative;
 	z-index: 2;
-	width: min(860px, calc(100% - 32px));
+	width: min(760px, calc(100% - 64px));
 	margin: 0 auto;
-	padding: 96px 0 64px;
-	text-align: center;
+	padding: 88px 0 64px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
 .hero-slogan {
-	margin-bottom: 14px;
+	margin: 0 0 14px;
 	color: #fff;
 	text-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-	font-size: clamp(2.2rem, 5vw, 4.35rem);
+	font-size: clamp(2.6rem, 4.6vw, 4rem);
 	font-weight: 800;
 	line-height: 0.98;
 	letter-spacing: -0.04em;
+	max-width: 10ch;
 }
 
 .hero-slogan::after {
@@ -515,23 +520,24 @@ body.services-page .site-header {
 	display: block;
 	width: 68px;
 	height: 4px;
-	margin: 14px auto 0;
+	margin: 16px 0 0;
 	border-radius: 999px;
 	background: var(--gold);
 }
 
 .hero-title {
-	margin-bottom: 10px;
+	margin: 0 0 10px;
 	color: rgba(255, 255, 255, 0.96);
-	font-size: clamp(1.2rem, 2vw, 1.9rem);
-	font-weight: 600;
+	font-size: clamp(1.15rem, 2vw, 1.55rem);
+	font-weight: 700;
+	max-width: 26ch;
 }
 
 .hero-sub {
-	max-width: 760px;
-	margin: 0 auto 24px;
-	color: rgba(255, 255, 255, 0.92);
-	font-size: clamp(1rem, 1.7vw, 1.15rem);
+	max-width: 34ch;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.9);
+	font-size: clamp(1rem, 1.45vw, 1.08rem);
 	line-height: 1.6;
 }
 
@@ -753,6 +759,9 @@ body.about-preview > * {
 	margin-top: 18px;
 }
 
+.management-grid-single {
+	grid-template-columns: 1fr;
+}
 .team-card {
 	display: grid;
 	grid-template-columns: auto minmax(0, 1fr);
@@ -1775,5 +1784,962 @@ footer {
 
 	.hero-media {
 		background: #111;
+	}
+}
+
+
+/* =========================
+   HOMEPAGE HERO POLISH
+   Centered premium desktop treatment
+   ========================= */
+
+body.home .hero {
+	min-height: min(82vh, 760px);
+	align-items: center;
+}
+
+body.home .hero-overlay,
+body.home .hero-media-overlay {
+	background:
+		linear-gradient(
+			180deg,
+			rgba(5, 8, 12, 0.18) 0%,
+			rgba(5, 8, 12, 0.36) 52%,
+			rgba(5, 8, 12, 0.60) 100%
+		);
+}
+
+body.home .hero-inner {
+	width: min(760px, calc(100% - 48px));
+	margin: 0 auto;
+	padding: 84px 0 64px;
+	text-align: center;
+	align-items: center;
+}
+
+body.home .hero-slogan {
+	max-width: 11ch;
+	margin: 0 auto 14px;
+	font-size: clamp(2.35rem, 4vw, 3.55rem);
+	line-height: 0.96;
+	letter-spacing: -0.04em;
+	text-wrap: balance;
+}
+
+body.home .hero-slogan::after {
+	margin: 14px auto 0;
+}
+
+body.home .hero-title {
+	margin: 0 auto 10px;
+	max-width: 18ch;
+	font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+body.home .hero-sub {
+	max-width: 30ch;
+	margin: 0 auto 24px;
+	font-size: clamp(0.98rem, 1.3vw, 1.05rem);
+	line-height: 1.5;
+}
+
+body.home .hero-cta-row {
+	justify-content: center;
+}
+
+@media (max-width: 900px) {
+	body.home .hero {
+		min-height: 58vh !important;
+	}
+
+	body.home .hero-inner {
+		width: calc(100% - 28px) !important;
+		margin: 0 auto !important;
+		padding: 74px 0 24px !important;
+		text-align: center !important;
+		align-items: center !important;
+	}
+
+	body.home .hero-slogan {
+		max-width: 12ch;
+		margin: 0 auto 12px !important;
+		font-size: clamp(2rem, 9vw, 3rem) !important;
+		line-height: 0.98 !important;
+	}
+
+	body.home .hero-slogan::after {
+		margin: 12px auto 0 !important;
+	}
+
+	body.home .hero-title {
+		max-width: 20ch;
+		margin: 0 auto 8px !important;
+		font-size: clamp(1rem, 4vw, 1.16rem) !important;
+	}
+
+	body.home .hero-sub {
+		max-width: 28ch;
+		margin: 0 auto 18px !important;
+		font-size: clamp(0.94rem, 3.2vw, 1rem) !important;
+		line-height: 1.42 !important;
+	}
+
+	body.home .hero-cta-row {
+		justify-content: center !important;
+	}
+}
+/* =========================
+   HOMEPAGE HERO POLISH END
+   ========================= */
+
+
+/* =========================
+   MOBILE SERVICES PAGE SPACING FIX
+   ========================= */
+
+@media (max-width: 640px) {
+	/* tighten the first content block under the sticky header */
+	.services-page .page-hero-lite {
+		padding-top: 18px !important;
+		padding-bottom: 10px !important;
+	}
+
+	.services-page .page-hero-lite h1,
+	.services-page .page-hero-lite h2 {
+		margin-bottom: 8px !important;
+	}
+
+	.services-page .page-hero-lite p {
+		margin-bottom: 0 !important;
+	}
+
+	/* reduce the gap between intro text and first service card */
+	.services-page .page-hero-lite + .section,
+	.services-page main > .section:first-of-type {
+		padding-top: 10px !important;
+		margin-top: 0 !important;
+	}
+
+	.services-page .services-grid {
+		gap: 12px !important;
+		margin-top: 0 !important;
+	}
+
+	.services-page .services-grid .card:first-child {
+		margin-top: 0 !important;
+	}
+
+	/* slightly tighten the first card contents on mobile */
+	.services-page .card-body {
+		padding-top: 14px !important;
+	}
+
+	/* keep the featured VAARS card visually connected to the intro */
+	.services-page .card:first-child .card-media {
+		margin-top: 0 !important;
+	}
+}
+/* =========================
+   MOBILE SERVICES PAGE SPACING FIX END
+   ========================= */
+
+/* =========================================================
+   VAARS PAGE — CLEAN FINAL LAYOUT
+   Replace all previous VAARS override blocks with this section.
+   ========================================================= */
+
+body.vaars-page {
+	background: #ffffff;
+}
+
+body.vaars-page main {
+	background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 52%, #ffffff 100%);
+}
+
+body.vaars-page footer {
+	margin-top: 0;
+}
+
+/* ---------- VAARS Hero ---------- */
+body.vaars-page .vaars-hero {
+	position: relative;
+	min-height: 72vh;
+	display: flex;
+	align-items: flex-start;
+	color: #fff;
+	background: url("/assets/vaars-hero-light.png") center center / cover no-repeat;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+body.vaars-page .vaars-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;
+	background: radial-gradient(ellipse at 58% 63%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.07) 26%, rgba(255,255,255,0.02) 44%, rgba(255,255,255,0) 62%);
+	mix-blend-mode: screen;
+}
+
+body.vaars-page .vaars-hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+	background: linear-gradient(90deg, rgba(0,0,0,0.56) 0%, rgba(0,0,0,0.34) 30%, rgba(0,0,0,0.12) 56%, rgba(0,0,0,0) 78%), linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.18) 100%);
+}
+
+body.vaars-page .vaars-hero-overlay { display: none; }
+
+body.vaars-page .vaars-hero-inner {
+	position: relative;
+	z-index: 3;
+	display: grid;
+	grid-template-columns: minmax(0, 410px) 1fr;
+	align-items: start;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 72px 0 120px;
+}
+
+body.vaars-page .vaars-hero-inner > * { grid-column: 1; }
+
+body.vaars-page .vaars-identity {
+	margin-bottom: 18px;
+	padding-left: 16px;
+	border-left: 3px solid rgba(201, 164, 71, 0.9);
+}
+
+body.vaars-page .vaars-kicker {
+	margin-bottom: 6px;
+	color: rgba(255, 255, 255, 0.82);
+	font-size: 0.78rem;
+	font-weight: 800;
+	letter-spacing: 0.13em;
+	text-transform: uppercase;
+	line-height: 1.3;
+}
+
+body.vaars-page .vaars-acronym {
+	margin-bottom: 6px;
+	color: var(--gold);
+	font-size: 1.12rem;
+	font-weight: 800;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	line-height: 1;
+}
+
+body.vaars-page .vaars-acronym-sub {
+	max-width: 330px;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.93);
+	font-size: 0.98rem;
+	font-weight: 500;
+	line-height: 1.42;
+}
+
+body.vaars-page .vaars-hero-title,
+body.vaars-page .vaars-hero h1 {
+	max-width: 12ch;
+	margin: 0;
+	color: #fff;
+	font-size: clamp(2.05rem, 3.05vw, 2.85rem);
+	font-weight: 800;
+	line-height: 1.02;
+	letter-spacing: -0.04em;
+	text-wrap: balance;
+	text-shadow: 0 4px 18px rgba(0, 0, 0, 0.58);
+}
+
+/* ---------- Why VAARS ---------- */
+body.vaars-page .vaars-why.section { padding-top: 42px; padding-bottom: 26px; }
+body.vaars-page .vaars-why-layout { max-width: 1080px; }
+body.vaars-page .vaars-why-main h2 { margin: 0 0 14px; }
+body.vaars-page .vaars-intro-card { margin: 0 0 18px; }
+body.vaars-page .vaars-intro-card p {
+	margin: 0;
+	padding: 20px 22px;
+	background: linear-gradient(180deg, #ffffff 0%, #fbfbfa 100%);
+	border: 1px solid rgba(15, 23, 32, 0.08);
+	border-left: 4px solid rgba(201, 164, 71, 0.62);
+	border-radius: 14px;
+	box-shadow: 0 8px 20px rgba(16, 24, 40, 0.045);
+	color: #334155;
+	font-size: 1.03rem;
+	font-weight: 700;
+	line-height: 1.6;
+}
+body.vaars-page .vaars-benefit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+body.vaars-page .vaars-benefit-card { min-height: 100%; padding: 18px; background: #fff; border: 1px solid rgba(15,23,32,.08); border-left: 3px solid rgba(201,164,71,.7); border-radius: 14px; box-shadow: 0 6px 18px rgba(16,24,40,.04); }
+body.vaars-page .vaars-benefit-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; color: #111827; font-size: .84rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+body.vaars-page .vaars-benefit-label::before { content: ""; width: 8px; height: 8px; border-radius: 999px; background: var(--gold); box-shadow: 0 0 0 5px rgba(201,164,71,.14); flex: 0 0 8px; }
+body.vaars-page .vaars-benefit-card p { margin: 0; color: #475569; font-size: .99rem; line-height: 1.68; }
+
+/* ---------- Assessment + Best Fit ---------- */
+body.vaars-page .vaars-assessment.section { padding-top: 30px; padding-bottom: 58px; background: #fff; }
+body.vaars-page .vaars-assessment-layout { display: grid; grid-template-columns: minmax(0, 640px) minmax(280px, 360px); gap: 42px; align-items: start; max-width: 1080px; }
+body.vaars-page .vaars-assessment-main { min-width: 0; }
+body.vaars-page .vaars-assessment h2 { margin: 0 0 8px; }
+body.vaars-page .vaars-assessment .section-lead { max-width: 640px; margin: 0 0 20px; color: #475569; line-height: 1.6; }
+body.vaars-page .vaars-quiz { width: 100%; max-width: 640px; display: grid; gap: 14px; padding: 22px; background: #fff; border: 1px solid rgba(15,23,32,.08); border-radius: 14px; box-shadow: 0 8px 22px rgba(16,24,40,.055); }
+body.vaars-page .quiz-block label { display: block; margin-bottom: 6px; color: #1f2937; font-size: .9rem; font-weight: 700; }
+body.vaars-page .quiz-block select,
+body.vaars-page .quiz-block input { width: 100%; padding: 11px 12px; border: 1px solid #d8dee6; border-radius: 8px; background: #fff; color: #111827; font-size: .95rem; }
+body.vaars-page .vaars-best-fit-side { width: 100%; max-width: 360px; margin-top: 72px; justify-self: end; align-self: start; padding: 22px 22px 20px; background: linear-gradient(180deg, #fff 0%, #fbfbfa 100%); border: 1px solid rgba(15,23,32,.08); border-left: 4px solid rgba(201,164,71,.62); border-radius: 14px; box-shadow: 0 8px 22px rgba(16,24,40,.045); }
+body.vaars-page .vaars-best-fit-side h3 { margin: 0 0 12px; color: #111827; font-size: .94rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+body.vaars-page .vaars-best-fit-side ul { margin: 0; padding-left: 1.1rem; }
+body.vaars-page .vaars-best-fit-side li { color: #1f2937; line-height: 1.6; }
+body.vaars-page .vaars-best-fit-side li + li { margin-top: 6px; }
+body.vaars-page .quiz-result { margin-top: 18px; padding: 16px; border-left: 4px solid var(--gold); border-radius: 10px; background: #f6f6f6; font-weight: 600; }
+
+/* ---------- Pillars / CTA ---------- */
+body.vaars-page .vaars-pillars { padding-top: 42px; padding-bottom: 54px; background: #f8f8f9; }
+body.vaars-page .vaars-pillars h2 { margin-bottom: 24px; }
+body.vaars-page .vaars-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+body.vaars-page .vaars-card { padding: 0; overflow: hidden; background: linear-gradient(180deg, #fff 0%, #fcfcfb 100%); border: 1px solid var(--border); border-left: 5px solid rgba(201,164,71,.45); border-radius: 16px; box-shadow: var(--shadow-sm); transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+body.vaars-page .vaars-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(201,164,71,.22); }
+body.vaars-page .vaars-card-head { display: flex; align-items: center; gap: 16px; padding: 16px 18px 10px; }
+body.vaars-page .vaars-card-icon { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; flex: 0 0 72px; border: 1px solid rgba(15,23,32,.08); border-radius: 16px; background: #fff; box-shadow: 0 4px 12px rgba(16,24,40,.05); }
+body.vaars-page .vaars-card-icon img { width: 52px; height: 52px; object-fit: contain; }
+body.vaars-page .vaars-card h3 { margin: 0; font-size: 1.08rem; line-height: 1.2; }
+body.vaars-page .vaars-card p { margin: 0; padding: 0 18px 18px; color: #4b5563; line-height: 1.6; }
+body.vaars-page .vaars-strip { padding: 24px 0; background: #0a0a0a; color: #fff; text-align: center; }
+body.vaars-page .vaars-strip p { margin: 0; color: #fff; font-size: 1.05rem; font-weight: 800; }
+body.vaars-page .vaars-cta { padding-top: 42px; padding-bottom: 24px; text-align: center; }
+body.vaars-page .vaars-cta .container { max-width: 760px; }
+body.vaars-page .vaars-cta h2 { margin-bottom: 12px; text-wrap: balance; }
+body.vaars-page .vaars-cta p { max-width: 620px; margin: 0 auto; }
+body.vaars-page .vaars-cta-action { margin-top: 24px; }
+
+@media (max-width: 900px) {
+	body.vaars-page .vaars-hero { height: 300px; min-height: 300px; background-position: 68% center; }
+	body.vaars-page .vaars-hero::before { background: radial-gradient(ellipse at 58% 66%, rgba(255,255,255,.16) 0%, rgba(255,255,255,.08) 26%, rgba(255,255,255,.02) 44%, rgba(255,255,255,0) 60%); }
+	body.vaars-page .vaars-hero::after { background: linear-gradient(90deg, rgba(0,0,0,.58) 0%, rgba(0,0,0,.38) 36%, rgba(0,0,0,.12) 60%, rgba(0,0,0,0) 82%); }
+	body.vaars-page .vaars-hero-inner { display: block; width: calc(100% - 24px); max-width: none; padding: 18px 0 0; }
+	body.vaars-page .vaars-identity { width: 48vw; max-width: 180px; margin: 0 0 8px; padding-left: 9px; }
+	body.vaars-page .vaars-kicker { font-size: .55rem; line-height: 1.18; letter-spacing: .08em; margin-bottom: 3px; }
+	body.vaars-page .vaars-acronym { font-size: .78rem; line-height: 1; letter-spacing: .12em; margin-bottom: 3px; }
+	body.vaars-page .vaars-acronym-sub { max-width: 19ch; font-size: .7rem; line-height: 1.22; }
+	body.vaars-page .vaars-hero-title,
+	body.vaars-page .vaars-hero h1 { width: 48vw; max-width: 180px; font-size: clamp(1rem, 4.6vw, 1.18rem); line-height: 1.06; letter-spacing: -.025em; }
+	body.vaars-page .vaars-why.section { padding-top: 24px; padding-bottom: 18px; }
+	body.vaars-page .vaars-why-layout,
+	body.vaars-page .vaars-assessment-layout { width: calc(100% - 22px); max-width: none; }
+	body.vaars-page .vaars-intro-card { margin-bottom: 12px; }
+	body.vaars-page .vaars-intro-card p { padding: 14px 16px; font-size: .96rem; line-height: 1.58; }
+	body.vaars-page .vaars-benefit-grid,
+	body.vaars-page .vaars-grid { grid-template-columns: 1fr; }
+	body.vaars-page .vaars-benefit-grid { gap: 12px; }
+	body.vaars-page .vaars-benefit-card { padding: 14px 16px; }
+	body.vaars-page .vaars-benefit-label { font-size: .76rem; line-height: 1.25; }
+	body.vaars-page .vaars-benefit-card p { font-size: .95rem; line-height: 1.55; }
+	body.vaars-page .vaars-assessment.section { padding-top: 20px; padding-bottom: 34px; }
+	body.vaars-page .vaars-assessment-layout { display: flex; flex-direction: column; gap: 18px; }
+	body.vaars-page .vaars-best-fit-side { order: -1; width: 100%; max-width: none; margin: 0; padding: 16px; justify-self: stretch; }
+	body.vaars-page .vaars-assessment h2 { font-size: clamp(1.35rem, 6vw, 1.75rem); }
+	body.vaars-page .vaars-assessment .section-lead { margin-bottom: 14px; line-height: 1.48; }
+	body.vaars-page .vaars-quiz { max-width: none; padding: 16px; gap: 13px; }
+	body.vaars-page .vaars-pillars { padding-top: 28px; padding-bottom: 34px; }
+	body.vaars-page .vaars-card-head { gap: 12px; padding: 14px 16px 8px; }
+	body.vaars-page .vaars-card-icon { width: 56px; height: 56px; flex-basis: 56px; border-radius: 12px; }
+	body.vaars-page .vaars-card-icon img { width: 38px; height: 38px; }
+	body.vaars-page .vaars-card h3 { font-size: 1rem; line-height: 1.3; }
+	body.vaars-page .vaars-card p { padding: 10px 16px 16px; font-size: .94rem; line-height: 1.55; }
+	body.vaars-page .vaars-strip { padding: 20px 0; }
+	body.vaars-page .vaars-strip p { font-size: .94rem; }
+	body.vaars-page .vaars-cta { padding-top: 28px; padding-bottom: 18px; }
+	body.vaars-page .vaars-cta-action { margin-top: 16px; }
+	body.vaars-page .vaars-cta .btn,
+	body.vaars-page .vaars-cta .btn-primary { width: 100%; max-width: 260px; }
+}
+
+@media (max-width: 420px) {
+	body.vaars-page .vaars-hero { height: 285px; min-height: 285px; background-position: 70% center; }
+	body.vaars-page .vaars-hero-inner,
+	body.vaars-page .vaars-why-layout,
+	body.vaars-page .vaars-assessment-layout { width: calc(100% - 20px); }
+	body.vaars-page .vaars-identity { width: 47vw; max-width: 170px; }
+	body.vaars-page .vaars-hero-title,
+	body.vaars-page .vaars-hero h1 { width: 48vw; max-width: 170px; font-size: clamp(.95rem, 4.5vw, 1.12rem); }
+}
+
+
+
+
+	/* Form column */
+	body.vaars-page .vaars-assessment-main {
+		position: relative !important;
+		z-index: 2 !important;
+	}
+
+	body.vaars-page .vaars-quiz {
+		max-width: 660px !important;
+		width: 100% !important;
+	}
+
+	/* Best Fit card (aligned + polished) */
+	body.vaars-page .vaars-best-fit-side {
+		position: relative !important;
+		z-index: 2 !important;
+		width: 100% !important;
+		max-width: 360px !important;
+		margin-top: 200px !important; /* tuned alignment */
+		align-self: start !important;
+		padding: 24px 24px 22px !important;
+		border-radius: 16px !important;
+		box-shadow: 0 16px 40px rgba(16, 24, 40, 0.08) !important;
+	}
+
+	/* =========================
+   VAARS ASSESSMENT — FINAL DESKTOP POLISH
+   ========================= */
+
+@media (min-width: 901px) {
+	body.vaars-page .vaars-assessment-layout {
+		display: grid !important;
+		grid-template-columns: minmax(0, 660px) 360px !important;
+		gap: 48px !important;
+		align-items: start !important;
+		max-width: 1120px !important;
+		margin: 0 auto !important;
+		position: relative !important;
+	}
+
+	body.vaars-page .vaars-assessment-layout::before {
+		content: "" !important;
+		position: absolute !important;
+		top: 178px !important;
+		right: 0 !important;
+		width: 360px !important;
+		height: 210px !important;
+		border-radius: 22px !important;
+		background: linear-gradient(
+	135deg,
+	rgba(201, 164, 71, 0.18),
+	rgba(201, 164, 71, 0.06)
+);
+		box-shadow: 0 24px 55px rgba(16, 24, 40, 0.045) !important;
+		z-index: 0 !important;
+		pointer-events: none !important;
+	}
+
+	body.vaars-page .vaars-assessment-layout::after {
+		display: none !important;
+		content: none !important;
+	}
+
+	body.vaars-page .vaars-assessment-main {
+		position: relative !important;
+		z-index: 2 !important;
+	}
+
+	body.vaars-page .vaars-quiz {
+		max-width: 660px !important;
+		width: 100% !important;
+	}
+
+	body.vaars-page .vaars-best-fit-side {
+		position: relative !important;
+		z-index: 2 !important;
+		width: 100% !important;
+		max-width: 360px !important;
+		margin-top: 185px !important;
+		align-self: start !important;
+		justify-self: end !important;
+		padding: 24px 24px 22px !important;
+		border-radius: 16px !important;
+		background: #fff !important;
+		box-shadow: 0 16px 40px rgba(16, 24, 40, 0.08) !important;
+	}
+}
+/* VAARS hero image crop adjustment */
+body.vaars-page .vaars-hero {
+	background-position: center 75% !important;
+	background-size: cover !important;
+}
+
+/* =========================
+   VAARS MOBILE ASSESSMENT GAP FIX
+   ========================= */
+
+   @media (max-width: 900px) {
+	body.vaars-page .vaars-assessment-layout::before,
+	body.vaars-page .vaars-assessment-layout::after {
+		display: none !important;
+		content: none !important;
+	}
+
+	body.vaars-page .vaars-assessment-layout {
+		display: flex !important;
+		flex-direction: column !important;
+		gap: 55px !important;
+	}
+
+	body.vaars-page .vaars-best-fit-side {
+		order: -1 !important;
+		margin: 0 0 8px 0 !important;
+	}
+
+	body.vaars-page .vaars-assessment-main {
+		margin-top: 0 !important;
+		padding-top: 0 !important;
+	}
+}
+/* =========================
+   VAARS MOBILE HERO — CLEAN 2 COLUMN
+   ========================= */
+
+   @media (max-width: 900px) {
+	body.vaars-page .vaars-hero-inner {
+		display: grid !important;
+		grid-template-columns: 1fr 1.2fr; /* slightly favor headline */
+		gap: 10px !important;
+		align-items: center !important;
+		width: calc(100% - 24px) !important;
+		padding-top: 18px !important;
+	}
+
+	/* LEFT SIDE (identity block) */
+	body.vaars-page .vaars-identity {
+		width: 100% !important;
+		max-width: none !important;
+	}
+
+	body.vaars-page .vaars-kicker {
+		font-size: 0.62rem !important;
+		letter-spacing: 0.1em !important;
+		color: rgba(255,255,255,0.85) !important;
+	}
+
+	body.vaars-page .vaars-acronym {
+		font-size: 0.9rem !important;
+		font-weight: 700 !important;
+		color: var(--gold) !important;
+		letter-spacing: 0.16em !important;
+		margin-top: 2px;
+	}
+
+	body.vaars-page .vaars-acronym-sub {
+		font-size: 0.75rem !important;
+		line-height: 1.25 !important;
+		color: rgba(255,255,255,0.95) !important;
+		margin-top: 4px;
+	}
+
+	/* RIGHT SIDE (headline) */
+	body.vaars-page .vaars-hero-title,
+	body.vaars-page .vaars-hero h1 {
+		width: 100% !important;
+		max-width: none !important;
+
+		font-size: clamp(1.05rem, 4.6vw, 1.25rem) !important;
+		font-weight: 800 !important;
+		line-height: 1.05 !important;
+		letter-spacing: -0.025em !important;
+
+		color: #ffffff !important;
+		text-shadow: 0 3px 14px rgba(0,0,0,0.7) !important;
+	}
+
+	/* tighten vertical spacing */
+	body.vaars-page .vaars-identity > * {
+		margin-bottom: 2px;
+	}
+}
+
+/* =========================
+   VAARS MOBILE HERO — TRUE TWO COLUMN FIX
+   ========================= */
+
+   @media (max-width: 900px) {
+	body.vaars-page .vaars-hero-inner {
+		display: grid !important;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) !important;
+		gap: 12px !important;
+		align-items: start !important;
+		width: calc(100% - 24px) !important;
+		padding-top: 18px !important;
+	}
+
+	body.vaars-page .vaars-hero-inner > * {
+		grid-column: auto !important;
+	}
+
+	body.vaars-page .vaars-identity {
+		grid-column: 1 !important;
+		width: 100% !important;
+		max-width: none !important;
+		margin: 0 !important;
+	}
+
+	body.vaars-page .vaars-hero-title,
+	body.vaars-page .vaars-hero h1 {
+		grid-column: 2 !important;
+		width: 100% !important;
+		max-width: none !important;
+		margin: 0 !important;
+		font-size: clamp(1rem, 4.4vw, 1.18rem) !important;
+		line-height: 1.05 !important;
+	}
+}
+
+/* =========================
+   VAARS HERO TEXT — FINAL POLISH (MOBILE)
+   ========================= */
+
+   @media (max-width: 900px) {
+
+	/* KICKER (top small text) */
+	body.vaars-page .vaars-kicker {
+		color: rgba(255,255,255,0.72) !important;   /* softer white = premium */
+		font-weight: 500 !important;    
+		font-size: 0.6rem;           /* lighter than headline */
+		letter-spacing: 0.14em !important;         /* refined spacing */
+		text-transform: uppercase;
+	}
+
+	/* ACRONYM (V.A.A.R.S) — brand anchor */
+	body.vaars-page .vaars-acronym {
+		color: var(--gold) !important;
+		font-weight: 800 !important;
+		letter-spacing: 0.2em !important;
+		font-size: 0.9rem !important;              /* slightly stronger presence */
+	}
+
+	/* SUBTEXT under acronym */
+	body.vaars-page .vaars-acronym-sub {
+		color: rgba(255,255,255,0.9) !important;
+		font-weight: 500 !important;
+		font-size: 0.78rem !important;
+		line-height: 1.3 !important;
+		max-width: 95%;                           /* prevents awkward wrapping */
+	}
+
+	/* HEADLINE BALANCE (important for overall feel) */
+	body.vaars-page .vaars-hero h1 {
+		font-size: clamp(1rem, 4.2vw, 1.15rem) !important;
+		line-height: 1.05 !important;
+		letter-spacing: -0.025em !important;
+		font-weight: 800 !important;
+	}
+}
+
+body.vaars-page .vaars-identity {
+	transform: translateY(2.5px);
+}
+
+body.vaars-page .vaars-hero h1 {
+	line-height: 1.08 !important;
+	letter-spacing: -0.02em !important;
+	font-weight: 800 !important;
+}
+
+body.vaars-page .vaars-identity > * {
+	margin-bottom: 1px;
+}
+
+@media (max-width: 900px) {
+
+	/* lock both columns to same vertical rhythm */
+	body.vaars-page .vaars-hero-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center; /* KEY FIX */
+		column-gap: 12px;
+	}
+
+	/* LEFT SIDE (kicker/acronym block) */
+	body.vaars-page .vaars-identity {
+		align-self: center;
+	}
+
+	/* RIGHT SIDE (H1) */
+	body.vaars-page .vaars-hero h1 {
+		margin: 0 !important;
+		align-self: center;
+	}
+}
+
+body.vaars-page .vaars-hero-inner {
+	column-gap: 14px;
+}
+
+/* =========================
+   HERO AUDIO BUTTON — FINAL
+   ========================= */
+
+   .hero-sound-toggle {
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 14px;
+	border-radius: 999px;
+	border: 1px solid rgba(255,255,255,0.35);
+	background: rgba(0,0,0,0.75);
+	color: #fff;
+	font-size: 0.8rem;
+	font-weight: 800;
+	cursor: pointer;
+	backdrop-filter: blur(8px);
+}
+
+.hero-sound-toggle::before {
+	content: "♪";
+	margin-right: 6px;
+	color: var(--gold);
+}
+
+.hero-sound-toggle:hover {
+	background: rgba(0,0,0,0.9);
+}
+
+@media (max-width: 900px) {
+	.hero-sound-toggle {
+		right: 12px;
+		bottom: 12px;
+		padding: 8px 10px;
+		font-size: 0.72rem;
+	}
+}
+
+/* =========================
+   VAARS DESKTOP HERO TITLE RESTORE
+   ========================= */
+
+   @media (min-width: 901px) {
+	body.vaars-page .vaars-hero-title,
+	body.vaars-page .vaars-hero h1 {
+		max-width: 11.5ch !important;
+		font-size: clamp(2.15rem, 3vw, 2.85rem) !important;
+		line-height: 1.02 !important;
+		letter-spacing: -0.04em !important;
+		margin: 0 !important;
+		color: #fff !important;
+		text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55) !important;
+	}
+}
+/* =========================
+   GLOBAL HEADER NORMALIZATION
+   ========================= */
+
+   .site-header {
+	position: sticky !important;
+	top: 0 !important;
+	z-index: 3000 !important;
+	background: #000 !important;
+	color: #fff !important;
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28) !important;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+	backdrop-filter: none !important;
+	background-image: none !important;
+	overflow: visible !important;
+}
+
+.site-header-inner {
+	width: min(1480px, calc(100% - 44px)) !important;
+	height: 84px !important;
+	margin: 0 auto !important;
+	display: grid !important;
+	grid-template-columns: auto 1fr auto !important;
+	align-items: center !important;
+	column-gap: 20px !important;
+}
+
+.site-header .brand img {
+	display: block !important;
+	height: 100px !important;
+	width: auto !important;
+	object-fit: contain !important;
+}
+
+.site-header .desktop-nav {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	gap: 22px !important;
+	margin-left: auto !important;
+}
+
+.site-header .desktop-nav a {
+	color: #fff !important;
+	font-size: 1rem !important;
+	font-weight: 800 !important;
+	letter-spacing: 0.03em !important;
+	text-transform: uppercase !important;
+	text-decoration: none !important;
+	padding: 12px 14px !important;
+	border-radius: 10px !important;
+}
+
+.site-header .desktop-nav a:hover,
+.site-header .desktop-nav a:focus-visible,
+.site-header .desktop-nav a[aria-current="page"] {
+	background: rgba(255, 255, 255, 0.08) !important;
+	color: #fff !important;
+}
+
+@media (max-width: 900px) {
+	.site-header-inner {
+		width: calc(100% - 20px) !important;
+		min-height: var(--header-height) !important;
+		grid-template-columns: 1fr auto !important;
+	}
+
+	.site-header .desktop-nav,
+	.site-header .header-cta {
+		display: none !important;
+	}
+
+	.site-header .hamburger {
+		display: inline-flex !important;
+	}
+}
+
+/* =========================
+   LEGAL / PRIVACY PAGE — FINAL
+   Scoped, professional, no footer bleed
+   ========================= */
+
+   body.legal-page main {
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 48px 20px 5px;
+}
+
+/* Page title */
+body.legal-page main h1 {
+	margin-bottom: 8px;
+	font-size: clamp(2rem, 3.2vw, 2.6rem);
+	letter-spacing: -0.02em;
+}
+
+/* “Last updated” */
+body.legal-page .muted {
+	display: block;
+	margin-bottom: 28px;
+	color: #6b7280;
+	font-size: 0.95rem;
+}
+
+/* Sections */
+body.legal-page main section {
+	margin-bottom: 32px;
+}
+
+/* Section headings */
+body.legal-page main h2 {
+	margin-bottom: 10px;
+	font-size: 1.25rem;
+	letter-spacing: -0.01em;
+}
+
+/* Body text */
+body.legal-page main p {
+	line-height: 1.7;
+	font-size: 0.98rem;
+	color: #374151;
+}
+
+/* Lists */
+body.legal-page main ul {
+	margin: 10px 0 14px;
+	padding-left: 1.2rem;
+}
+
+body.legal-page main li {
+	margin-bottom: 6px;
+	line-height: 1.6;
+	color: #374151;
+}
+
+/* Subtle section divider */
+body.legal-page main section + section {
+	border-top: 1px solid rgba(15, 23, 32, 0.06);
+	padding-top: 22px;
+}
+
+/* Links ONLY inside content */
+body.legal-page main a {
+	color: var(--gold-dark);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+body.legal-page main a:hover {
+	text-decoration: underline;
+}
+
+/* Explicitly preserve footer + header */
+/* Preserve header/footer styling exactly */
+body.legal-page .site-header a {
+	text-decoration: none !important;
+}
+
+/* Footer links should match normal footer */
+body.legal-page footer .footer-nav a {
+	color: #ddd !important;
+	font-weight: 700 !important;
+	text-decoration: none !important;
+}
+
+/* Footer email/phone should stay inherited + underlined */
+body.legal-page footer .footer-meta a {
+	color: inherit !important;
+	font-weight: inherit !important;
+	text-decoration: underline !important;
+}
+
+/* Footer CTA button should match other pages */
+body.legal-page footer .cta-banner .btn,
+body.legal-page footer .cta-banner .btn-primary {
+	color: #111 !important;
+	font-weight: 800 !important;
+	text-decoration: none !important;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+	body.legal-page main {
+		padding: 28px 16px 40px;
+	}
+
+	body.legal-page main h1 {
+		font-size: 1.9rem;
+	}
+
+	body.legal-page main h2 {
+		font-size: 1.15rem;
+	}
+}
+
+@media (max-width: 900px) {
+
+	body.vaars-page .vaars-hero h1 {
+		color: #ffffff !important;
+		font-weight: 800 !important;
+		text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+	}
+
+	body.vaars-page .vaars-kicker {
+		color: rgba(255,255,255,0.95) !important;
+		font-weight: 600 !important;
+	}
+
+	body.vaars-page .vaars-acronym {
+		color: var(--gold) !important;
+		font-weight: 800 !important;
+	}
+
+	body.vaars-page .vaars-acronym-sub {
+		color: rgba(255,255,255,0.9) !important;
 	}
 }

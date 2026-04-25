@@ -158,7 +158,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>True Shield Security — Professional Security Services</title>
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css?v=4">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 </head>
 
@@ -177,6 +177,7 @@
                 <a href="/index.html" aria-current="page">Home</a>
                 <a href="/about.html">About</a>
                 <a href="/services.html">Services</a>
+                <a href="/vaars.html">VAARS</a>
                 <a href="/contact.html">Contact</a>
             </nav>
 
@@ -203,6 +204,7 @@
                 <a href="/about.html">About</a>
                 <a href="/services.html">Services</a>
                 <a href="/contact.html">Contact</a>
+                <a href="/vaars.html">VAARS</a>
                 <a class="btn btn-primary" href="/contact.html">Request a Quote</a>
             </div>
         </nav>
@@ -217,7 +219,7 @@
         autoplay muted loop playsinline preload="metadata"
         poster="/assets/hero-poster-desktop.jpg"
     >
-        <source src="/assets/(TSS) Website HERO Promotional-AIFaces.mp4" type="video/mp4" />
+        <source src="/assets/desktop-hero-video.mp4" type="video/mp4" />
     </video>
 
     <!-- Mobile video -->
@@ -228,6 +230,16 @@
     >
         <source src="/assets/hero-mobile2.mp4" type="video/mp4" />
     </video>
+
+
+    <!-- Voiceover audio: user controlled, does not autoplay or loop -->
+    <audio id="heroAudio" preload="auto">
+        <source src="/assets/hero-video-audiotrack.mp4" type="audio/mp4" />
+    </audio>
+
+    <button id="heroSoundToggle" class="hero-sound-toggle" type="button" aria-pressed="false">
+        Play Audio
+    </button>
 
     <!-- Overlay -->
     <div class="hero-media-overlay"></div>
@@ -342,6 +354,7 @@
                 <a href="/about.html">About</a>
                 <a href="/services.html">Services</a>
                 <a href="/contact.html">Contact</a>
+                <a href="/vaars.html">VAARS</a>
                 <a href="/privacy.html">Privacy</a>
             </nav>
 
@@ -356,6 +369,40 @@
             </div>
         </div>
     </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const audio = document.getElementById("heroAudio");
+            const button = document.getElementById("heroSoundToggle");
+
+            if (!audio || !button) return;
+
+            button.addEventListener("click", async () => {
+                try {
+                    if (audio.paused) {
+                        audio.currentTime = 0;
+                        audio.volume = 0.6;
+                        await audio.play();
+                        button.textContent = "Playing...";
+                        button.setAttribute("aria-pressed", "true");
+                    } else {
+                        audio.pause();
+                        audio.currentTime = 0;
+                        button.textContent = "Replay";
+                        button.setAttribute("aria-pressed", "false");
+                    }
+                } catch (error) {
+                    console.error("Hero voiceover playback failed:", error);
+                }
+            });
+
+            audio.addEventListener("ended", () => {
+                button.textContent = "Replay";
+                button.setAttribute("aria-pressed", "false");
+            });
+        });
+    </script>
 
     <script src="/assets/js/header.js"></script>
     <script src="/assets/js/main.js"></script>

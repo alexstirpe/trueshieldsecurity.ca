@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>V.A.A.R.S — True Shield Security</title>
+	<link rel="stylesheet" href="/css/styles.css" />
+</head>
+
+<body class="vaars-page">
+	<header class="site-header is-solid">
+		<div class="site-header-inner">
+			<div class="brand">
+				<a href="/index.html" aria-label="True Shield Security home">
+					<img src="/assets/logo.png" alt="True Shield Security logo" />
+				</a>
+			</div>
+
+			<nav class="desktop-nav" aria-label="Primary">
+				<a href="/index.html">Home</a>
+				<a href="/about.html">About</a>
+				<a href="/services.html">Services</a>
+				<a href="/vaars.html" aria-current="page">VAARS</a>
+				<a href="/contact.html">Contact</a>
+			</nav>
+
+			<div class="header-cta">
+				<a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+			</div>
+
+			<button
+				class="hamburger"
+				type="button"
+				aria-label="Toggle menu"
+				aria-expanded="false"
+				aria-controls="mobile-navigation"
+			>
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+
+		<nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation">
+			<div class="mobile-nav-inner">
+				<a href="/index.html">Home</a>
+				<a href="/about.html">About</a>
+				<a href="/services.html">Services</a>
+				<a href="/vaars.html" aria-current="page">VAARS</a>
+				<a href="/contact.html">Contact</a>
+				<a class="btn btn-primary" href="/contact.html">Request a Quote</a>
+			</div>
+		</nav>
+	</header>
+
+	<main id="main-content">
+		<section class="vaars-hero">
+			<div class="vaars-hero-overlay"></div>
+
+			<div class="container vaars-hero-inner">
+				<div class="vaars-identity">
+					<div class="vaars-kicker">TRUE SHIELD TACTICAL RESPONSE</div>
+					<div class="vaars-acronym">V.A.A.R.S</div>
+					<p class="vaars-acronym-sub">Vagrant, Asset &amp; Access Response Services</p>
+				</div>
+				<h1 class="vaars-hero-title">
+					End-to-End Property Management for Access, Response &amp; Enforcement
+				</h1>
+			</div>
+		</section>
+
+		<section class="section vaars-why">
+			<div class="container vaars-why-layout">
+				<div class="vaars-why-main">
+					<h2>Why VAARS</h2>
+
+					<div class="vaars-intro-card">
+						<p>We Deliver Total Property Control — Without the Burden.</p>
+					</div>
+
+					<div class="vaars-benefit-grid">
+						<article class="vaars-benefit-card">
+							<div class="vaars-benefit-label">24/7 Access &amp; Response</div>
+							<p>
+								Whether it’s unlocking a site at 3 AM, managing contractor access, or responding to unauthorized presence, our team handles the full lifecycle of the incident—efficiently, professionally, and without disruption to your operations.
+							</p>
+						</article>
+
+						<article class="vaars-benefit-card">
+							<div class="vaars-benefit-label">Reduced Client Burden</div>
+							<p>
+								This integrated approach reduces liability, improves response time, and ensures your property remains secure without requiring your direct involvement.
+							</p>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section vaars-assessment">
+			<div class="container vaars-assessment-layout">
+				<div class="vaars-assessment-main">
+					<h2>Is VAARS the Right Fit for Your Property?</h2>
+							<p class="section-lead">
+								Answer a few quick questions to help determine if our V.A.A.R.S. solution aligns with your operational needs.
+							</p>
+
+							<form id="vaarsQuiz" class="vaars-quiz">
+
+								<!-- Question 1 -->
+								<div class="quiz-block">
+									<label>What type of property are you managing?</label>
+									<select name="property_type" required>
+										<option value="">Select an option</option>
+										<option>Condominium / Residential</option>
+										<option>Commercial / Office</option>
+										<option>Construction Site</option>
+										<option>Retail / Mixed Use</option>
+										<option>Other</option>
+									</select>
+								</div>
+
+								<!-- Question 2 -->
+								<div class="quiz-block">
+									<label>Do you experience unauthorized access, trespassing, or loitering?</label>
+									<select name="unauthorized_activity" required>
+										<option value="">Select an option</option>
+										<option>Frequently</option>
+										<option>Occasionally</option>
+										<option>Rarely</option>
+										<option>Never</option>
+									</select>
+								</div>
+
+								<!-- Question 3 -->
+								<div class="quiz-block">
+									<label>Do you require after-hours access control (contractors, vendors, deliveries)?</label>
+									<select name="after_hours_access" required>
+										<option value="">Select an option</option>
+										<option>Yes, regularly</option>
+										<option>Sometimes</option>
+										<option>No</option>
+									</select>
+								</div>
+
+								<!-- Question 4 -->
+								<div class="quiz-block">
+									<label>Have incidents required coordination with law enforcement or enforcement under the Trespass to Property Act?</label>
+									<select name="law_enforcement" required>
+										<option value="">Select an option</option>
+										<option>Yes</option>
+										<option>No</option>
+										<option>Not sure</option>
+									</select>
+								</div>
+
+								<!-- Question 5 -->
+								<div class="quiz-block">
+									<label>Would reducing management burden and response time be valuable to you?</label>
+									<select name="client_burden" required>
+										<option value="">Select an option</option>
+										<option>Very important</option>
+										<option>Somewhat important</option>
+										<option>Not a priority</option>
+									</select>
+								</div>
+
+								<!-- Optional contact -->
+								<div class="quiz-block">
+									<label>Email (optional)</label>
+									<input type="email" name="email" placeholder="you@example.com" />
+								</div>
+
+								<button type="submit" class="btn btn-primary">Get Results</button>
+							</form>
+
+							<div id="quizResult" class="quiz-result" hidden></div>
+				</div>
+
+				<aside class="vaars-best-fit-side">
+					<h3>Best Fit For</h3>
+					<ul>
+						<li>High-value properties</li>
+						<li>High-risk properties</li>
+						<li>Actively managed sites</li>
+						<li>After-hours access and incident response</li>
+					</ul>
+				</aside>
+			</div>
+		</section>
+
+		<section class="section vaars-pillars">
+			<div class="container">
+				<h2>Key Service Pillars</h2>
+
+				<div class="vaars-grid">
+					<div class="vaars-card">
+						<div class="vaars-card-head">
+							<div class="vaars-card-icon">
+								<img src="/assets/icon-access.png" alt="Authorized Access" />
+							</div>
+							<h3>Authorized Access Management</h3>
+						</div>
+						<p>
+							Secure key-holding and scheduled or on-demand lock and unlock services for contractors, staff, vendors, or deliveries.
+						</p>
+					</div>
+
+					<div class="vaars-card">
+						<div class="vaars-card-head">
+							<div class="vaars-card-icon">
+								<img src="/assets/icon-rapid.png" alt="Rapid Interdiction" />
+							</div>
+							<h3>Rapid Interdiction</h3>
+						</div>
+						<p>
+							Immediate deployment of mobile units to address vagrancy, aggressive individuals, trespassing, or unauthorized loitering.
+						</p>
+					</div>
+
+					<div class="vaars-card">
+						<div class="vaars-card-head">
+							<div class="vaars-card-icon">
+								<img src="/assets/icon-deescalation.png" alt="Professional De-escalation" />
+							</div>
+							<h3>Professional De-escalation</h3>
+						</div>
+						<p>
+							Backed by 26+ years of industry experience, our personnel resolve situations through verbal compliance, tactical presence, and controlled response.
+						</p>
+					</div>
+
+					<div class="vaars-card">
+						<div class="vaars-card-head">
+							<div class="vaars-card-icon">
+								<img src="/assets/icon-liaison.png" alt="Enforcement Liaison" />
+							</div>
+							<h3>Enforcement Liaison</h3>
+						</div>
+						<p>
+							Acting as the Authorized Agent for the property owner, we coordinate directly with police for trespass enforcement, removals, and action when required.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="vaars-strip">
+			<div class="container">
+				<p>Built for high-risk, high-value, and actively managed properties.</p>
+			</div>
+		</section>
+
+		<section class="section vaars-cta">
+			<div class="container">
+				<h2>Secure Your Property. Simplify Your Operations.</h2>
+				<p>Let VAARS handle access, response, and enforcement — so you can focus on what matters.</p>
+
+				<div class="vaars-cta-action">
+					<a href="/contact.html" class="btn btn-primary">Contact Our Team</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="footer-inner">
+			<nav class="footer-nav" aria-label="Footer navigation">
+				<a href="/index.html">Home</a>
+				<a href="/about.html">About</a>
+				<a href="/services.html">Services</a>
+				<a href="/vaars.html" aria-current="page">VAARS</a>
+				<a href="/contact.html">Contact</a>
+				<a href="/privacy.html">Privacy</a>
+			</nav>
+
+			<div class="footer-meta">
+				<div>
+					Email:
+					<a href="mailto:support@trueshieldsecurity.ca">support@trueshieldsecurity.ca</a>
+					| Phone:
+					<a href="tel:+16478947950">647-894-7950</a>
+				</div>
+				<div>© 2025 True Shield Security</div>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const button = document.querySelector(".hamburger");
+			const mobileNav = document.querySelector(".mobile-nav");
+
+			if (!button || !mobileNav) return;
+
+			button.addEventListener("click", function () {
+				const isOpen = button.classList.toggle("active");
+				mobileNav.classList.toggle("active", isOpen);
+				document.body.classList.toggle("nav-open", isOpen);
+				button.setAttribute("aria-expanded", String(isOpen));
+			});
+		});
+	</script>
+
+	<script>
+		document.getElementById("vaarsQuiz").addEventListener("submit", async function(e) {
+			e.preventDefault();
+
+			const formData = new FormData(this);
+			const data = Object.fromEntries(formData.entries());
+
+			let score = 0;
+			if (data.unauthorized_activity === "Frequently") score += 2;
+			if (data.after_hours_access.includes("Yes")) score += 2;
+			if (data.law_enforcement === "Yes") score += 2;
+			if (data.client_burden === "Very important") score += 2;
+
+			let resultText = "";
+			if (score >= 6) {
+				resultText = "VAARS is a strong fit for your property. We recommend speaking with our team.";
+			} else if (score >= 3) {
+				resultText = "VAARS may benefit your operations depending on your needs.";
+			} else {
+				resultText = "VAARS may not be necessary at this time, but we’re happy to advise.";
+			}
+
+			const resultBox = document.getElementById("quizResult");
+			resultBox.textContent = resultText;
+			resultBox.hidden = false;
+			data.score = score;
+
+
+			try {
+				await fetch("https://script.google.com/macros/s/AKfycbyGVu-yqgWupaopZtPPwnrZ-DRwlbQaoRpoKCnQ0HpxIxjFGk7x1Zx5QnxP6Mys9BQQRA/exec", {
+					method: "POST",
+					mode: "no-cors",
+					headers: {
+						"Content-Type": "text/plain;charset=utf-8"
+					},
+					body: JSON.stringify(data)
+				});
+			} catch (err) {
+				console.error("Sheet logging failed:", err);
+			}
+		});
+	</script>
+
+	<script src="/assets/js/main.js"></script>
+</body>
+</html>
