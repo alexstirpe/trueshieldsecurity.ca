@@ -91,6 +91,17 @@
 							<label for="phone">Phone</label>
 							<input id="phone" name="phone" type="tel" placeholder="Phone number" />
 
+							<label for="service">Service Needed</label>
+							<select id="service" name="service" required>
+								<option value="">Select a service</option>
+								<option value="Manned Guarding">Manned Guarding</option>
+								<option value="Mobile Patrols">Mobile Patrols</option>
+								<option value="Concierge &amp; Front Desk">Concierge &amp; Front Desk</option>
+								<option value="VAARS">VAARS</option>
+								<option value="Security Consulting &amp; Risk Assessment">Security Consulting &amp; Risk Assessment</option>
+								<option value="Other">Other</option>
+							</select>
+
 							<label for="message">Message</label>
 							<textarea id="message" name="message" placeholder="Tell us about your security needs... NOTE: Do not include personal information or confidential details." required></textarea>
 
@@ -225,6 +236,27 @@
 				status.style.display = "block";
 
 				if (res.ok) {
+					// Reporting copy: also log the submission to the SharePoint
+					// "Quote Requests" list via the MOLEX Cloudflare Worker.
+					// Best-effort only — email delivery above is the real
+					// submission, so a Worker failure must not block the
+					// thank-you message.
+					try {
+						fetch("https://tss-quote-form.mounirm00.workers.dev/", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({
+								name: form.elements["name"] ? form.elements["name"].value : "",
+								email: form.elements["email"] ? form.elements["email"].value : "",
+								phone: form.elements["phone"] ? form.elements["phone"].value : "",
+								service: form.elements["service"] ? form.elements["service"].value : "",
+								message: form.elements["message"] ? form.elements["message"].value : "",
+								submitted_at: submittedAt ? submittedAt.value : new Date().toISOString(),
+								loaded_at: new Date(start).toISOString(),
+								_honey: honey ? honey.value : ""
+							})
+						}).catch(function (err) { console.warn("Quote logging failed", err); });
+					} catch (err) { console.warn("Quote logging failed", err); }
 					status.style.color = "#0b6623";
 					status.textContent = "Thanks — we sent your request to our internal operations team. We will reply shortly via email or telephone.";
 					form.reset();
